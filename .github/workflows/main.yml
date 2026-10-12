@@ -1,0 +1,25 @@
+name: Auto-Create Feature Branch
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  create-linked-branch:
+    if: github.event.label.name == 'User Story'
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      issues: write 
+
+    steps:
+      - name: Create branch via GitHub CLI
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          SLUG=$(echo "$ISSUE_TITLE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g' | sed -E 's/^-+|-+$//g')
+          gh issue develop ${{ github.event.issue.number }} \
+            --repo ${{ github.repository }} \
+            --name "feature/$SLUG"

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${appName} + ' · Home'">GearHub · Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans antialiased">
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+    <main class="flex-grow">
+        <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+            <div class="inline-flex items-center space-x-2 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Base Application Running</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight">
+                Peer-to-Peer Gear Rental Across <span class="text-brand-600">Australia</span>
+            </h1>
+            
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600" th:text="${description}">
+                Rent quality gear from locals when you need it, or earn extra income renting out equipment you already own.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#features" class="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-semibold rounded-xl text-white bg-brand-600 hover:bg-brand-700 shadow-md transition">
+                    Explore Platform
+                </a>
+                <a href="https://github.com/rmit-cosc2299/Group-P06-09" target="_blank" class="inline-flex justify-center items-center px-6 py-3 border border-slate-300 text-base font-semibold rounded-xl text-slate-700 bg-white hover:bg-slate-50 transition">
+                    GitHub Repository
+                </a>
+            </div>
+        </section>
+
+
+
+
+    </main>
+
+    
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-xs">
+            <div class="flex items-center space-x-2">
+                <span class="font-semibold text-white">COSC2299 SEPT</span>
+                <span>·</span>
+                <span>Group-P06-09</span>
+            </div>
+            <div class="mt-4 sm:mt-0 text-slate-500">
+                Spring Boot & Thymeleaf Monolith Architecture
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
