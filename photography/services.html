@@ -24,9 +24,10 @@
           <a href="works.html" class="hover-underline-animation">Portfolio</a>
           <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 hidden group-hover:block">
             <div class="flex flex-col items-center gap-2 p-4 w-40 bg-black border border-slate-700 rounded-md">
-              <a href="works.html#street" class="hover-underline-animation">Street</a>
-              <a href="works.html#architecture" class="hover-underline-animation">Architecture</a>
-              <a href="works.html#landscape" class="hover-underline-animation">Landscape</a>
+              <a href="/photography/events.html" class="hover-underline-animation">Event</a>
+              <a href="/photography/contact.html" class="hover-underline-animation">Commercial</a>
+              <a href="/photography/realestate.html" class="hover-underline-animation">Real Estate</a>
+              <a href="/photography/portraits.html" class="hover-underline-animation">Portrait</a>
             </div>
           </div>
         </div>
@@ -39,42 +40,23 @@
     </div>
   </header>
 
-  <!-- CONTACT -->
-  <main class="flex-grow py-20">
-    <p class="text-3xl text-center mb-10">Get in touch</p>
+    <div class="h-36"></div>
 
-    <form action="https://formspree.io/f/myeknpvn" method="POST"
-          class="max-w-xl mx-auto flex flex-col gap-5 px-4">
+    <section class="p-8 flex flex-row text-left">
+    <div class="w-[50%] mx-25">
+      <p class="text-5xl mt-2">Services</p>
+      <p class="my-5">Event Photography</p>
+      <p class="my-5">Real Estate Photography</p>
+      <p class="my-5">Portrait Photography</p>
+    </div>
+    <div class="relative w-[50%] h-[540px]">
+      <img class="absolute top-0 left-0 h-[500px] w-[500px] object-cover z-20" src="../images/events/e (9).jpg" alt="">
+      <img class="absolute top-12 left-10 h-[490px] w-[500px] object-cover blur-[1px]" src="../images/events/e (8).jpg" alt="">
+      <img class="absolute top-6 left-5 h-[490px] w-[500px] object-cover blur-[1px]" src="../images/events/e (7).jpg" alt="">
+    </div>
+  </section>
 
-      <!-- Subject line of the email you receive -->
-      <input type="hidden" name="_subject" value="New enquiry from your photography site">
-
-      <input type="text" name="name" placeholder="Name" required
-             class="bg-transparent border border-slate-600 p-3 focus:border-white outline-none">
-
-      <input type="email" name="email" placeholder="Email" required
-             class="bg-transparent border border-slate-600 p-3 focus:border-white outline-none">
-
-      <select name="type"
-              class="bg-black border border-slate-600 p-3 focus:border-white outline-none">
-        <option value="Event">Event</option>
-        <option value="Real Estate">Real Estate</option>
-        <option value="Portrait">Portrait</option>
-        <option value="Other">Other</option>
-      </select>
-
-      <textarea name="message" rows="5" placeholder="Tell me about your shoot" required
-                class="bg-transparent border border-slate-600 p-3 focus:border-white outline-none"></textarea>
-
-      <button type="submit"
-              class="border border-slate-600 py-3 tracking-widest uppercase text-sm cursor-pointer hover:bg-white hover:text-black transition">
-        Send
-      </button>
-
-      <a href="https://www.instagram.com/remister35mm/" class="text-1xl text-center mb-10 hover:cursor-pointer">Alternatively contact me on Instagram @remister35mm</a>
-
-    </form>
-  </main>
+  <div class="h-36"></div> 
 
   <!-- FOOTER -->
   <footer class="bg-white py-8 text-center text-sm flex flex-col">
