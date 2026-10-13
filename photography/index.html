@@ -2,128 +2,229 @@
 <html lang="en" class="scheme-dark">
 <head>
   <meta charset="UTF-8">
-  <!-- Makes the site look right on phones -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Remy Kassim — Photography</title>
 
-  <!-- Load Tailwind -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style type="text/tailwindcss"> @theme {--font-sans: "Montserrat", sans-serif;}</style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style type="text/tailwindcss">@theme { --font-sans: "Roboto Mono", monospace; }</style>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body class="bg-black text-neutral-200 min-h-screen">
+<body class="bg-black text-white min-h-screen">
 
-    <header class="border-b border-slate-200 sticky top-0 z-50 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4  lg:px-8 flex justify-between h-24 items-center">
-          <a href="./" class="text-2xl font-light tracking-widest uppercase col">
-              Remy Kassim Photography
-          </a>
-          <nav class="flex items-center space-x-6 text-sm font-medium text-slate-600 text-white">
-              <div class="relative group">
-                <a href="works.html" class="hover-underline-animation">Portfolio</a>
-                <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 hidden group-hover:block">
-                    <div class="flex flex-col items-center gap-2 p-4 w-40 bg-black border border-slate-700 rounded-md">
-                        <a href="works.html#street" class="hover-underline-animation">Street</a>
-                        <a href="works.html#architecture" class="hover-underline-animation">Architecture</a>
-                        <a href="works.html#landscape" class="hover-underline-animation">Landscape</a>
-                    </div>
-                </div>
-              </div>
-              <a href="#services"  class="hover-underline-animation">Services  </a>
-              <a href="#contact"   class="hover-underline-animation">Contact  </a>
-              <img href="https://www.instagram.com/remister35mm/" class="w-[30px] hover:cursor-pointer" src="/images/ig.png" alt="">
-          </nav>
-        </div>
-    </header>
+  <!-- NAV  -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 h-24 flex justify-between items-center">
+      <a href="./" class="text-2xl font-light tracking-widest uppercase">Remy Kassim Photography</a>
 
-  <div class="flex p-8 text-center my-5 h-[71vh]">
-    <div class="mx-auto gap-25 flex flex-row my-15">
-      <div class=""> 
-          <img class="w-[400px] h-auto" src="/images/IMG_2946-4.jpg" alt=""> 
-          <a class="block my-5 hover-underline-animation hover:cursor-pointer"> Street </a> 
+      <nav class="flex items-center gap-6 text-sm font-medium">
+        <a href="" class="hover-underline-animation">Home</a>
+        <div class="relative group">
+          <a href="works.html" class="hover-underline-animation">Portfolio</a>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 hidden group-hover:block">
+            <div class="flex flex-col items-center gap-2 p-4 w-40 bg-black border border-slate-700 rounded-md">
+              <a href="works.html#street" class="hover-underline-animation">Street</a>
+              <a href="works.html#architecture" class="hover-underline-animation">Architecture</a>
+              <a href="works.html#landscape" class="hover-underline-animation">Landscape</a>
+            </div>
+          </div>
         </div>
-      <div class="">
-          <img class="w-[400px] h-auto" src="/images/IMG_3357.jpg" alt=""> 
-          <a class="block my-5 hover-underline-animation hover:cursor-pointer"> Architecture </a> 
-        </div>
-      <div class="">
-        <img class="w-[400px] h-auto" src="/images/event.jpg" alt=""> 
-        <a class="block my-5 hover-underline-animation hover:cursor-pointer"> Event </a> 
+        <a href="#services" class="hover-underline-animation">Services</a>
+        <a href="#contact" class="hover-underline-animation">Contact</a>
+        <a href="https://www.instagram.com/remister35mm/" target="_blank">
+          <img class="w-[30px]" src="/images/ig.png" alt="Instagram">
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- GENRES -->
+  <!-- Border is always there but transparent, so hovering only changes its colour (no jumping) -->
+  <section class="reveal py-20">
+    <div class="flex flex-row justify-center gap-25 text-center">
+      <div class="w-[400px] p-3 border border-transparent hover:border-white transition cursor-pointer">
+        <img class="w-full h-[520px] object-cover" src="/images/IMG_2946-4.jpg" alt="Street">
+        <p class="py-4">Street</p>
+      </div>
+      <div class="w-[400px] p-3 border border-transparent hover:border-white transition cursor-pointer">
+        <img class="w-full h-[520px] object-cover" src="/images/IMG_3357.jpg" alt="Architecture">
+        <p class="py-4">Architecture</p>
+      </div>
+      <div class="w-[400px] p-3 border border-transparent hover:border-white transition cursor-pointer">
+        <img class="w-full h-[520px] object-cover" src="/images/event.jpg" alt="Event">
+        <p class="py-4">Event</p>
       </div>
     </div>
-  </div>
-  </div>
+  </section>
 
   <div class="h-36"></div>
 
-  <!-- Header -->
-    <div class="p-8 text-center flex flex-row">
-      <div class="w-[50%] mx-25">
-        <p class="text-5xl mt-2 text-stone-500 text-white">Hi I'm Remy Kassim</p>
-        <p class="mt-2 text-stone-500 text-white">Melbourne Based, Authentic Event, Real Estate, Portrait Photographer</p>
-        <p class="my-5 mx-5 text-stone-500 text-white">Hey, I’m Remy. I got into photography because I love capturing moments that are just nice to look at, whether that’s a busy street, a wide open landscape, a well-styled home, or the energy of an event.
-            I’m just starting out, and right now I’m shooting commercial work for a chauffeur business. I’m keen to take on more, so if you’ve got an event, a property to list, or something you want captured, let’s chat.</p>
-        <a href="../" class="mt-4 inline-block text-sm text-white hover:underline">← Dev work</a>
+  <!-- ABOUT ME -->
+  <section class="p-8 flex flex-row text-center">
+    <div class="w-[50%] mx-25">
+      <p class="text-5xl mt-2">Hi I'm Remy Kassim</p>
+      <p class="mt-2">Melbourne Based, Authentic Event, Real Estate, Portrait Photographer</p>
+      <p class="my-5 mx-5">Hey, I’m Remy. Computer Science Student, I got into photography because I love capturing moments that are just nice to look at, whether that’s a busy street, a wide open landscape, a well-styled home, or the energy of an event.
+        I’m just starting out, and right now I’m shooting commercial work for a chauffeur business. I’m keen to take on more, so if you’ve got an event, a property to list, or something you want captured, let’s chat.</p>
+      <a href="../" class="mt-4 inline-block text-sm hover:underline">← Dev work</a>
+    </div>
+    <div class="relative w-[50%] h-[540px]">
+      <img class="absolute top-0 left-0 h-[500px] w-[500px] object-cover z-20" src="../images/me1.jpg" alt="">
+      <img class="absolute top-12 left-10 h-[490px] w-[500px] object-cover blur-[1px]" src="/images/_MG_5455-2.jpg" alt="">
+      <img class="absolute top-6 left-5 h-[490px] w-[500px] object-cover blur-[1px]" src="/images/_MG_5536.jpg" alt="">
+    </div>
+  </section>
+
+  <div class="h-40"></div>
+
+  <p class=" text-2xl text-center my-5"> My Works</p>
+  <!-- GALLERY -->
+  <section class="columns-3 gap-4 max-w-6xl mx-auto">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (1).jpg" alt="">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (2).jpg" alt="">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (4).jpg" alt="">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (5).jpg" alt="">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (6).jpg" alt="">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (7).jpg" alt="">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (8).jpg" alt="">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (9).jpg" alt="">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (10).jpg" alt="">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (11).jpg" alt="">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (12).jpg" alt="">
+    <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (13).jpg" alt="">
+  </section>
+
+  <div class="h-30"></div>
+
+  <!-- REVIEWS -->
+  <section class="p-8 flex flex-row items-center">
+    <button onclick="previousReview()"
+            class="w-12 h-12 shrink-0 rounded-full border border-slate-600 text-xl cursor-pointer hover:bg-white hover:text-black transition">←</button>
+
+    <div class="flex flex-row flex-1 items-center">
+      <div class="w-[50%] mx-25 text-left">
+        <p class="text-3xl mt-2">Review from my lovely clients</p>
+        <p id="reviewName" class="mt-4 text-sm transition-opacity duration-500"></p>
+        <p id="reviewText" class="my-5 mx-5 transition-opacity duration-500"></p>
       </div>
-      <div class="relative w-[50%]">
-        <img class="absolute h-[500px] w-[500px] object-cover z-20" src="../images/me1.jpg" alt="">
-        <img class="absolute h-[490px] w-[500px] object-cover mx-auto ml-5 top-12 left-5 blur-[1px]" src="/images/_MG_5455-2.jpg" alt="">
-        <img class="absolute h-[490px] w-[500px] object-cover mx-auto ml-5 top-6 left-0 blur-[1px]" src="/images/_MG_5536.jpg" alt="">
+      <div class="relative w-[50%] h-[500px]">
+        <img id="reviewImage" class="absolute h-[500px] w-[500px] object-cover transition-opacity duration-500" src="" alt="">
       </div>
     </div>
 
-  <div class="h-70"></div>
+    <button onclick="nextReview()"
+            class="w-12 h-12 shrink-0 rounded-full border border-slate-600 text-xl cursor-pointer hover:bg-white hover:text-black transition">→</button>
+  </section>
 
-  <div class="columns-3 gap-4 max-w-6xl mx-auto">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (1).jpg" alt="">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (2).jpg" alt="">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (4).jpg" alt="">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (5).jpg" alt="">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (6).jpg" alt="">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (7).jpg" alt="">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (8).jpg" alt="">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (9).jpg" alt="">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (10).jpg" alt="">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (11).jpg" alt="">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (12).jpg" alt="">
-    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (13).jpg" alt="">
-  </div>
+  <div class="h-20"></div>
 
-  <div class="h-60"></div>
+  <footer class="bg-white py-8 text-center text-sm text-neutral-500 border-t border-slate-800">
+    <p class="my-1 text-black"> © 2026 Remy Kassim Photography. All rights reserved. </p>
+    <p class="my-1 text-black"> Email : r.m.kasym@gmail.com </p>
+    <p class="my-1 text-black"> Instagram : @remister35mm </p>
+  </footer>
 
-    <div class="p-8 text-left flex flex-row">
-      <div class="w-[50%] mx-25">
-        <p class="text-3xl mt-2 text-stone-500 text-white">Review from my lovely clients</p>
-        <a href="../" class="mt-4 inline-block text-sm text-white hover:underline"> - Charlie & Erika </a>
-        <p class="my-5 mx-5 text-stone-500 text-white">Absolutely delighted to work with Remy! Very fast, professional, responsive. I'd definately recommend to friend and family, takes my breath away! </p>
-        
-      </div>
-      <div class="relative w-[50%]">
-        <img class="absolute h-[500px] w-[500px] object-cover z-20" src="../images/kirk.jpg" alt="">
-      </div>
-    </div>
 
-  <div class="h-60"></div>
-  
-  <div class="h-60"></div>
 
+
+
+  <!-- SMOOTH SCROLL -->
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script>
-      // Turn on smooth scrolling
-      // lerp: lower = slower and smoother (0.1 is the default)
-      const lenis = new Lenis({
-          lerp: 0.16,
-          anchors: true
-      });
+    // lerp: lower = slower and smoother (0.1 is the default)
+    const lenis = new Lenis({
+      lerp: 0.10,
+      anchors: true
+    });
 
-      // Keep updating the scroll every frame
-      function raf(time) {
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-      }
+    function raf(time) {
+      lenis.raf(time);
       requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  </script>
+
+  <!-- REVIEWS -->
+  <script>
+    const reviews = [
+      {
+        name: "Charlie & Erika",
+        text: "Absolutely delighted to work with Remy! Very fast, professional, responsive. I'd definitely recommend to friends and family, takes my breath away!",
+        image: "../images/kirk.jpg"
+      },
+      {
+        name: "Next Client",
+        text: "Their review goes here.",
+        image: "../images/kirk.jpg"
+      }
+    ];
+
+    let currentReview = 0;
+    let timer;
+
+    function showReview() {
+      const name = document.getElementById('reviewName');
+      const text = document.getElementById('reviewText');
+      const image = document.getElementById('reviewImage');
+
+      // Fade out
+      name.style.opacity = 0;
+      text.style.opacity = 0;
+      image.style.opacity = 0;
+
+      // Swap everything after the fade, then fade back in
+      setTimeout(function () {
+        name.textContent = '— ' + reviews[currentReview].name;
+        text.textContent = reviews[currentReview].text;
+        image.src = reviews[currentReview].image;
+
+        name.style.opacity = 1;
+        text.style.opacity = 1;
+        image.style.opacity = 1;
+      }, 500);
+    }
+
+    function nextReview() {
+      currentReview = currentReview + 1;
+      if (currentReview >= reviews.length) {
+        currentReview = 0;
+      }
+      showReview();
+      restartTimer();
+    }
+
+    function previousReview() {
+      currentReview = currentReview - 1;
+      if (currentReview < 0) {
+        currentReview = reviews.length - 1;
+      }
+      showReview();
+      restartTimer();
+    }
+
+    function restartTimer() {
+      clearInterval(timer);
+      timer = setInterval(nextReview, 15000);
+    }
+
+    showReview();
+    restartTimer();
+  </script>
+
+  <script>
+      const revealItems = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('show');
+                  observer.unobserve(entry.target);
+              }
+          });
+      }, { threshold: 0.15 });
+      revealItems.forEach(function (item) {
+          observer.observe(item);
+      });
   </script>
 
 </body>
