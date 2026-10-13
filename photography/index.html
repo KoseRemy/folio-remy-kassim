@@ -31,7 +31,7 @@
                     </div>
                 </div>
               </div>
-              <a href="#services"  class="hover-underline-animation">Pricing  </a>
+              <a href="#services"  class="hover-underline-animation">Services  </a>
               <a href="#contact"   class="hover-underline-animation">Contact  </a>
               <img href="https://www.instagram.com/remister35mm/" class="w-[30px] hover:cursor-pointer" src="/images/ig.png" alt="">
           </nav>
@@ -42,35 +42,89 @@
     <div class="mx-auto gap-25 flex flex-row my-15">
       <div class=""> 
           <img class="w-[400px] h-auto" src="/images/IMG_2946-4.jpg" alt=""> 
-          <a class="block my-5"> Street </a> 
+          <a class="block my-5 hover-underline-animation hover:cursor-pointer"> Street </a> 
         </div>
       <div class="">
           <img class="w-[400px] h-auto" src="/images/IMG_3357.jpg" alt=""> 
-          <a class="block my-5"> Architecture </a> 
+          <a class="block my-5 hover-underline-animation hover:cursor-pointer"> Architecture </a> 
         </div>
-      <div class=""> 
+      <div class="">
         <img class="w-[400px] h-auto" src="/images/event.jpg" alt=""> 
-        <a class="block my-5"> Event </a> 
+        <a class="block my-5 hover-underline-animation hover:cursor-pointer"> Event </a> 
       </div>
     </div>
   </div>
   </div>
 
-  <div class="h-16"></div>
+  <div class="h-36"></div>
 
   <!-- Header -->
-    <div class="p-8 text-center">
-      <div>
-        <p class="mt-2 text-stone-500 text-white">Hi I'm Remy Kassim</p>
-        <p class="mt-2 text-stone-500 text-white">Hey, I’m Remy. I got into photography because I love capturing moments that are just nice to look at, whether that’s a busy street, a wide open landscape, a well-styled home, or the energy of an event.
-  I’m just starting out, and right now I’m shooting commercial work for a chauffeur business. I’m keen to take on more, so if you’ve got an event, a property to list, or something you want captured, let’s chat.</p>
+    <div class="p-8 text-center flex flex-row">
+      <div class="w-[50%] mx-25">
+        <p class="text-5xl mt-2 text-stone-500 text-white">Hi I'm Remy Kassim</p>
+        <p class="mt-2 text-stone-500 text-white">Melbourne Based, Authentic Event, Real Estate, Portrait Photographer</p>
+        <p class="my-5 mx-5 text-stone-500 text-white">Hey, I’m Remy. I got into photography because I love capturing moments that are just nice to look at, whether that’s a busy street, a wide open landscape, a well-styled home, or the energy of an event.
+            I’m just starting out, and right now I’m shooting commercial work for a chauffeur business. I’m keen to take on more, so if you’ve got an event, a property to list, or something you want captured, let’s chat.</p>
         <a href="../" class="mt-4 inline-block text-sm text-white hover:underline">← Dev work</a>
       </div>
-      <div>
+      <div class="relative w-[50%]">
+        <img class="absolute h-[500px] w-[500px] object-cover z-20" src="../images/me1.jpg" alt="">
+        <img class="absolute h-[490px] w-[500px] object-cover mx-auto ml-5 top-12 left-5 blur-[1px]" src="/images/_MG_5455-2.jpg" alt="">
+        <img class="absolute h-[490px] w-[500px] object-cover mx-auto ml-5 top-6 left-0 blur-[1px]" src="/images/_MG_5536.jpg" alt="">
+      </div>
+    </div>
+
+  <div class="h-70"></div>
+
+  <div class="columns-3 gap-4 max-w-6xl mx-auto">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (1).jpg" alt="">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (2).jpg" alt="">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (4).jpg" alt="">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (5).jpg" alt="">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (6).jpg" alt="">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (7).jpg" alt="">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (8).jpg" alt="">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (9).jpg" alt="">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (10).jpg" alt="">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (11).jpg" alt="">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (12).jpg" alt="">
+    <img class="max-h-[700px] w-full mb-4" src="/images/general gallery/a (13).jpg" alt="">
+  </div>
+
+  <div class="h-60"></div>
+
+    <div class="p-8 text-left flex flex-row">
+      <div class="w-[50%] mx-25">
+        <p class="text-3xl mt-2 text-stone-500 text-white">Review from my lovely clients</p>
+        <a href="../" class="mt-4 inline-block text-sm text-white hover:underline"> - Charlie & Erika </a>
+        <p class="my-5 mx-5 text-stone-500 text-white">Absolutely delighted to work with Remy! Very fast, professional, responsive. I'd definately recommend to friend and family, takes my breath away! </p>
         
       </div>
+      <div class="relative w-[50%]">
+        <img class="absolute h-[500px] w-[500px] object-cover z-20" src="../images/kirk.jpg" alt="">
+      </div>
+    </div>
 
-  <div class="h-56"></div>
+  <div class="h-60"></div>
+  
+  <div class="h-60"></div>
+
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+      // Turn on smooth scrolling
+      // lerp: lower = slower and smoother (0.1 is the default)
+      const lenis = new Lenis({
+          lerp: 0.16,
+          anchors: true
+      });
+
+      // Keep updating the scroll every frame
+      function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+  </script>
 
 </body>
 </html>
