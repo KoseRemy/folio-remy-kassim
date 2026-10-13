@@ -1,60 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scheme-dark">
 <head>
   <meta charset="UTF-8">
-  <!-- Makes the site look right on phones -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Remy Kassim — Photography</title>
+  <title>Real Estate — Remy Kassim Photography</title>
 
-  <!-- Load Tailwind -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style type="text/tailwindcss"> @theme {
-    --font-sans: "Montserrat", sans-serif;}
-</style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style type="text/tailwindcss">@theme { --font-sans: "Roboto Mono", monospace; }</style>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body class="bg-black text-neutral-200 min-h-screen">
+<body class="bg-black text-white min-h-screen flex flex-col">
 
+  <!-- NAV -->
   <header class="sticky top-0 z-50 border-b border-slate-200 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 lg:px-8 h-24 flex justify-between items-center">
-      <a href="./" class="text-2xl font-light tracking-widest uppercase">Remy Kassim Photography</a>
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 h-24 w-full flex justify-between items-center">
+      <a href="./" class="text-2xl font-light tracking-widest uppercase">Remy Kassim Photography (W.I.P!!!)</a>
 
       <nav class="flex items-center gap-6 text-sm font-medium">
-        <a href="/photography/" class="hover-underline-animation">Home</a>
+        <a href="./" class="hover-underline-animation">Home</a>
         <div class="relative group">
-          <a href="" class="hover-underline-animation">Portfolio</a>
+          <a href="#" class="hover-underline-animation">Portfolio</a>
           <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 hidden group-hover:block">
             <div class="flex flex-col items-center gap-2 p-4 w-40 bg-black border border-slate-700 rounded-md">
-              <a href="/photography/events.html" class="hover-underline-animation">Event</a>
-              <a href="/photography/commercial.html" class="hover-underline-animation">Commercial</a>
-              <a href="/photography/realestate.html" class="hover-underline-animation">Real Estate</a>
-              <a href="/photography/portraits.html" class="hover-underline-animation">Portrait</a>
+              <a href="events.html" class="hover-underline-animation">Event</a>
+              <a href="commercial.html" class="hover-underline-animation">Commercial</a>
+              <a href="realestate.html" class="hover-underline-animation">Real Estate</a>
+              <a href="portraits.html" class="hover-underline-animation">Portrait</a>
             </div>
           </div>
         </div>
         <a href="services.html" class="hover-underline-animation">Services</a>
-        <a href="/photography/contact.html" class="hover-underline-animation">Contact</a>
-        <a href="https://www.instagram.com/remister35mm/" target="_blank">
-          <img class="w-[30px]" src="/images/ig.png" alt="Instagram">
+        <a href="contact.html" class="hover-underline-animation">Contact</a>
+        <a href="../" class="inline-block hover:underline">🡐dev</a>
+        <a href="https://www.instagram.com/remister35mm/" target="_blank" rel="noopener">
+          <img class="w-[30px]" src="../images/ig.png" alt="Instagram">
         </a>
       </nav>
     </div>
   </header>
 
+  <main class="flex-grow">
+    <!-- GALLERY -->
     <p class="mt-30 text-4xl text-center mb-10">Real Estate Photography</p>
     <section class="columns-3 gap-4 max-w-6xl mx-auto">
-      <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (1).jpg" alt="">
-      <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/IMG_3357.jpg" alt="">
+      <img class="w-full max-h-[700px] object-cover mb-4 reveal" src="../images/general gallery/a (1).jpg" alt="">
+      <img class="w-full max-h-[700px] object-cover mb-4 reveal" src="../images/IMG_3357.jpg" alt="">
     </section>
 
-  <!-- Header -->
+    <!-- INTRO -->
     <div class="p-8 text-center my-5">
-      <p class="mt-2 text-stone-500 text-white">Hi I'm Remy Kassim</p>
-      <p class="mt-2 text-stone-500 text-white">I got into photography because I love capturing moments that are just nice to look at, whether that’s a busy street, a wide open landscape, a well-styled home, or the energy of an event.
-I’m just starting out, and right now I’m shooting commercial work for a chauffeur business. I’m keen to take on more, so if you’ve got an event, a property to list, or something you want captured, let’s chat.</p>
-      <a href="../" class="mt-4 inline-block text-sm text-white hover:underline">← Dev work</a>
+      <p class="mt-2">Hi I'm Remy Kassim</p>
+      <p class="mt-2">I got into photography because I love capturing moments that are just nice to look at, whether that’s a busy street, a wide open landscape, a well-styled home, or the energy of an event.
+        I’m just starting out, and right now I’m shooting commercial work for a chauffeur business. I’m keen to take on more, so if you’ve got an event, a property to list, or something you want captured, let’s chat.</p>
+      <a href="../" class="mt-4 inline-block text-sm hover:underline">← Dev work</a>
     </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white py-8 text-center text-sm flex flex-col">
+    <p class="my-1 text-black">© 2026 Remy Kassim Photography. All rights reserved.</p>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=r.m.kasym@gmail.com&su=Photography%20enquiry"
+       target="_blank" rel="noopener" class="my-1 text-black">Email me : r.m.kasym@gmail.com</a>
+    <a href="https://www.instagram.com/remister35mm/" target="_blank" rel="noopener" class="my-1 text-black">Instagram : @remister35mm</a>
+  </footer>
+
+  <!-- SMOOTH SCROLL -->
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script>
+    const lenis = new Lenis({
+      lerp: 0.10,
+      anchors: true
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  </script>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealItems.forEach(function (item) {
+      observer.observe(item);
+    });
+  </script>
 
 </body>
 </html>
