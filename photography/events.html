@@ -16,23 +16,33 @@
 
 <body class="bg-black text-neutral-200 min-h-screen">
 
-    <header class="border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4  lg:px-8 flex justify-between h-24 items-center">
+  <header class="sticky top-0 z-50 border-b border-slate-200 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 h-24 flex justify-between items-center">
+      <a href="./" class="text-2xl font-light tracking-widest uppercase">Remy Kassim Photography</a>
 
-                <a href="./" class="text-2xl font-light tracking-widest uppercase col">
-                    Remy Kassim Photography
-                </a>
-
-                <nav class="flex items-center space-x-6 text-sm font-medium text-slate-600 text-white">
-                    <a href="./" class="hover:text-slate-900 transition">Home</a>
-                    <a href="works.html" class="hover:text-slate-900  transition">Portfolio</a>
-                    <a href="#services"  class="hover:text-slate-900  transition">Pricing</a>
-                    <a href="#contact"   class="hover:text-slate-900  transition">Contact</a>
-                    <a href="https://instagram.com/YOUR_HANDLE" target="_blank" class="hover:text-slate-900 transition">IG</a>
-                </nav>
+      <nav class="flex items-center gap-6 text-sm font-medium">
+        <a href="/photography/" class="hover-underline-animation">Home</a>
+        <div class="relative group">
+          <a href="" class="hover-underline-animation">Portfolio</a>
+          <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 hidden group-hover:block">
+            <div class="flex flex-col items-center gap-2 p-4 w-40 bg-black border border-slate-700 rounded-md">
+              <a href="/photography/events.html" class="hover-underline-animation">Event</a>
+              <a href="/photography/commercial.html" class="hover-underline-animation">Commercial</a>
+              <a href="/photography/realestate.html" class="hover-underline-animation">Real Estate</a>
+              <a href="/photography/portraits.html" class="hover-underline-animation">Portrait</a>
+            </div>
+          </div>
         </div>
-    </header>
+        <a href="services.html" class="hover-underline-animation">Services</a>
+        <a href="/photography/contact.html" class="hover-underline-animation">Contact</a>
+        <a href="https://www.instagram.com/remister35mm/" target="_blank">
+          <img class="w-[30px]" src="/images/ig.png" alt="Instagram">
+        </a>
+      </nav>
+    </div>
+  </header>
 
+    <p class="mt-30 text-4xl text-center mb-10">Event Photography</p>
     <section class="columns-3 gap-4 max-w-6xl mx-auto">
       <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (1).jpg" alt="">
       <img class="w-full max-h-[700px] object-cover mb-4 reveal " src="/images/general gallery/a (2).jpg" alt="">
