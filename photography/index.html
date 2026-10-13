@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scheme-dark">
 <head>
   <meta charset="UTF-8">
   <!-- Makes the site look right on phones -->
@@ -9,43 +9,68 @@
   <!-- Load Tailwind -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style type="text/tailwindcss"> @theme {
-    --font-sans: "Montserrat", sans-serif;}
-</style>
+  <style type="text/tailwindcss"> @theme {--font-sans: "Montserrat", sans-serif;}</style>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body class="bg-stone-100 text-stone-900 min-h-screen">
+<body class="bg-black text-neutral-200 min-h-screen">
 
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex justify-between h-16 items-center">
-
-                <a href="./" class="text-2xl font-light tracking-widest uppercase">
-                    Remy Kassim Photography
-                </a>
-
-                <nav class="flex items-center space-x-6 text-sm font-medium text-slate-600">
-                    <a href="./" class="hover:text-slate-900 text-stone-500 transition">Home</a>
-                    <a href="works.html" class="hover:text-slate-900 text-stone-500 transition">Works</a>
-                    <a href="#services"  class="hover:text-slate-900 text-stone-500 transition">Services</a>
-                    <a href="#contact"   class="hover:text-slate-900 text-stone-500 transition">Contact</a>
-                    <a href="https://instagram.com/YOUR_HANDLE" target="_blank" class="hover:text-slate-900 transition">IG</a>
-                </nav>
-
-            </div>
+    <header class="border-b border-slate-200 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4  lg:px-8 flex justify-between h-24 items-center">
+          <a href="./" class="text-2xl font-light tracking-widest uppercase col">
+              Remy Kassim Photography
+          </a>
+          <nav class="flex items-center space-x-6 text-sm font-medium text-slate-600 text-white">
+              <div class="relative group">
+                <a href="works.html" class="hover-underline-animation">Portfolio</a>
+                <div class="absolute left-1/2 -translate-x-1/2 top-full pt-3 hidden group-hover:block">
+                    <div class="flex flex-col items-center gap-2 p-4 w-40 bg-black border border-slate-700 rounded-md">
+                        <a href="works.html#street" class="hover-underline-animation">Street</a>
+                        <a href="works.html#architecture" class="hover-underline-animation">Architecture</a>
+                        <a href="works.html#landscape" class="hover-underline-animation">Landscape</a>
+                    </div>
+                </div>
+              </div>
+              <a href="#services"  class="hover-underline-animation">Pricing  </a>
+              <a href="#contact"   class="hover-underline-animation">Contact  </a>
+              <img href="https://www.instagram.com/remister35mm/" class="w-[30px] hover:cursor-pointer" src="/images/ig.png" alt="">
+          </nav>
         </div>
     </header>
 
-  <!-- Header -->
-  <header class="p-8 text-center">
-    
-    <p class="mt-2 text-stone-500">Photography</p>
+  <div class="flex p-8 text-center my-5 h-[71vh]">
+    <div class="mx-auto gap-25 flex flex-row my-15">
+      <div class=""> 
+          <img class="w-[400px] h-auto" src="/images/IMG_2946-4.jpg" alt=""> 
+          <a class="block my-5"> Street </a> 
+        </div>
+      <div class="">
+          <img class="w-[400px] h-auto" src="/images/IMG_3357.jpg" alt=""> 
+          <a class="block my-5"> Architecture </a> 
+        </div>
+      <div class=""> 
+        <img class="w-[400px] h-auto" src="/images/event.jpg" alt=""> 
+        <a class="block my-5"> Event </a> 
+      </div>
+    </div>
+  </div>
+  </div>
 
-    <!-- Link back to the coding site -->
-    <a href="../" class="mt-4 inline-block text-sm text-stone-600 hover:underline">
-      ← Dev work
-    </a>
-  </header>
+  <div class="h-16"></div>
+
+  <!-- Header -->
+    <div class="p-8 text-center">
+      <div>
+        <p class="mt-2 text-stone-500 text-white">Hi I'm Remy Kassim</p>
+        <p class="mt-2 text-stone-500 text-white">Hey, I’m Remy. I got into photography because I love capturing moments that are just nice to look at, whether that’s a busy street, a wide open landscape, a well-styled home, or the energy of an event.
+  I’m just starting out, and right now I’m shooting commercial work for a chauffeur business. I’m keen to take on more, so if you’ve got an event, a property to list, or something you want captured, let’s chat.</p>
+        <a href="../" class="mt-4 inline-block text-sm text-white hover:underline">← Dev work</a>
+      </div>
+      <div>
+        
+      </div>
+
+  <div class="h-56"></div>
 
 </body>
 </html>
