@@ -2,6 +2,11 @@ html {
   font-size: 19px;
 }
 
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .hover-underline-animation {
   display: inline-block;
   position: relative;
@@ -28,9 +33,4 @@ html {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
 }
