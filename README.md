@@ -1,12 +1,25 @@
-## Used
-- **HTML**: static pages
-- **Tailwind CSS v4**: styling
-- **Roboto Mono**: font
-- **Vanilla JS**: review carousel and scroll reveal
-- **Formspree**: contact form (GitHub Pages has no backend)
+# Remy Kassim — Folio (WIP!)
 
-## todo list
-- add linkedin in nav bar,
-- projects expand and links to repo
-- fancy schmancy list of qualitfications, certs and whatver
-- fancy schamny effects for aura points
+An interactive portfolio built as a 3D cube in space. Where Each face of the cube is a page.
+Includes my photography portfolio
+
+**Link:** https://remy-kassim-dev-git-main-koseremys-projects.vercel.app/
+
+## Features
+- Each Side is a HTML Page
+- WASD and UI to navigate page
+- ESC for Free-orbit
+- Starfield, Earth (day/night shader + atmosphere), Moon and Jupiter, content adapted and taken from freeCodeCamp threeJs tutorial(https://www.youtube.com/watch?v=UMqNHi1GDAE)
+
+## Controls
+| Key | Action |
+|-----|--------|
+| Click | Start |
+| W A S D / Arrow keys | Move between faces |
+| Esc | Free orbit mode |
+| Side menu | Jump straight to a page |
+
+## Built with
+- [Three.js](https://threejs.org/) — WebGL + CSS3DRenderer
+- Tailwind CSS
+- Hosted on Vercel
