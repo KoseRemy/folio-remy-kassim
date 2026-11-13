@@ -102,7 +102,7 @@ function animate(t = 0) {
 
     if (initZoom) {
         camera.position.z += (1152 - camera.position.z) * 0.05;
-        CUBE.quaternion.slerp(targetRotation, 0.08);
+        CUBE.quaternion.slerp(targetRotation, 0.06);
     }
 
     controls.update();
