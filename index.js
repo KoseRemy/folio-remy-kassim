@@ -92,3 +92,15 @@ function animate(t = 0) {
 }
 animate();
 
+async function loadPage(divId, filePath) {
+    const response = await fetch(filePath);
+    const html = await response.text();
+    document.getElementById(divId).innerHTML = html;
+}
+
+loadPage("p1", "pages/side1.html");
+loadPage("p2", "pages/side2.html");
+loadPage("p3", "pages/side3.html");
+loadPage("p4", "pages/side4.html");
+loadPage("p5", "pages/side5.html");
+loadPage("p6", "pages/side6.html");
