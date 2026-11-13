@@ -36,15 +36,10 @@ const CUBE = new THREE.Mesh(geo, mat);
 scene.add(CUBE);
 
 // MESH CUBES
-// const largeBox1 = new THREE.BoxGeometry(1100, 1100, 1100);
-// const wireMat1 = new THREE.MeshBasicMaterial({color: 0x3b82f6,wireframe: true});
-// const wireMesh1 = new THREE.Mesh(largeBox1, wireMat1);
-// scene.add(wireMesh1);
-
-// const largeBox2 = new THREE.BoxGeometry(1200, 1200, 1200);
-// const wireMat2 = new THREE.MeshBasicMaterial({color: 0xeab308,wireframe: true});
-// const wireMesh2 = new THREE.Mesh(largeBox2, wireMat2);
-// scene.add(wireMesh2);
+const wireBox = new THREE.BoxGeometry(1000, 1000, 1000);
+const wireMat = new THREE.MeshBasicMaterial({color: 0xffffff,wireframe: true});
+const wireMesh = new THREE.Mesh(wireBox, wireMat);
+scene.add(wireMesh);
 
 // UI BUTTONS
 const ui = new CSS3DObject(document.getElementById("ui"));
@@ -115,19 +110,24 @@ scene.add(stars)
 // EARTH
 const earthRadius = 50;
 const sunDirection = new THREE.Vector3(-2, 0.5, 1.5).normalize();
-
 const earthGroup = new THREE.Group();
 earthGroup.rotation.z = -23.4 * Math.PI / 180;
-earthGroup.position.set(1500, 500, 5);
+earthGroup.position.set(1400, 500, 5);
 scene.add(earthGroup);
-
 const earthGeo = new THREE.IcosahedronGeometry(earthRadius, 12);
 const earthMesh = new THREE.Mesh(earthGeo, getEarthMat(sunDirection));
 earthGroup.add(earthMesh);
-
 const glowMesh = new THREE.Mesh(earthGeo, getFresnelMat());
 glowMesh.scale.setScalar(1.02);
 earthGroup.add(glowMesh);
+
+// SUN
+const sunRadius = 300;
+const sunGeo = new THREE.IcosahedronGeometry(sunRadius,12);
+const sunMat = new THREE.MeshStandardMaterial({map : loader.load("./textures/sun.jpg"),});
+const sunMesh = new THREE.Mesh(sunGeo,sunMat);
+sunMesh.position.set(-3650, 1750, -2000);
+scene.add(sunMesh);
 
 // Moon
 const moonGeo = new THREE.IcosahedronGeometry(13,12);
@@ -143,6 +143,13 @@ const jupiterMesh = new THREE.Mesh(jupiterGeo,jupiterMat);
 jupiterMesh.position.set(-1650, -450, -400);
 scene.add(jupiterMesh);
 
+// JUPITER PANEL
+const jupiterPanel = new CSS3DObject(document.getElementById("jupiter"));
+jupiterPanel.position.set(-1650, -400, -400);
+scene.add(jupiterPanel);
+loadPage("jupiter", "pages/jupiter.html");
+
+
 
 // ----------RENDERING------------------------------------------------------------------------
 let lastFace = null;
@@ -155,16 +162,19 @@ function animate(t = 0) {
     earthMesh.rotation.y += t * 0.0000001;
     moonMesh.rotation.y += t * 0.0000001;
     jupiterMesh.rotation.y += t * 0.000001;
-    // wireMesh1.rotation.y = -t * 0.0005;
-    // wireMesh2.rotation.y = -t * 0.0005;
-    
 
     // STATE 1: before the user clicks, spin the cube
-    if (!initialClick) {CUBE.rotation.y = -t * 0.0005;}
+    if (!initialClick) {
+        CUBE.visible = false;
+        CUBE.rotation.y = -t * 0.0005;
+        wireMesh.rotation.y = -t * 0.0005;
+    }
 
     // STATE 2: first frame after the click, snap to face 1 (runs once)
     if (initialClick && !initZoom) {
         currFace = 1;
+        CUBE.visible = true;
+        wireMesh.visible = false;
         goTo(1)
         camera.position.set(0, 0, 2500);
 
