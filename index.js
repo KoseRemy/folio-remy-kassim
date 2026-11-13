@@ -1,6 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "jsm/controls/OrbitControls.js";
 import { CSS3DRenderer, CSS3DObject } from 'jsm/renderers/CSS3DRenderer.js';
+import getStarfield from "./src/getStarfield.js";
+import { getEarthMat } from "./src/getEarthMat.js";
+import { getFresnelMat } from "./src/getFresnelMat.js";
 
 // RENDERING FOR CSS3D OBJECTS
 const cssRenderer = new CSS3DRenderer();
@@ -23,17 +26,31 @@ const aspect = w / h;
 const near = 0.01;
 const far = 10000;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.z = 2500;
+camera.position.set(-900, 1100, 2500);
 
 const scene = new THREE.Scene();
 
 // CUBE 
+
 const geo = new THREE.BoxGeometry(1000, 1000, 1000);
 const mat = new THREE.MeshStandardMaterial({color: 0x27272a});
 const CUBE = new THREE.Mesh(geo, mat);
 scene.add(CUBE);
 
-// PAGE RENDER
+// MESH CUBES
+// const largeBox1 = new THREE.BoxGeometry(1100, 1100, 1100);
+// const wireMat1 = new THREE.MeshBasicMaterial({color: 0x3b82f6,wireframe: true});
+// const wireMesh1 = new THREE.Mesh(largeBox1, wireMat1);
+// scene.add(wireMesh1);
+
+// const largeBox2 = new THREE.BoxGeometry(1200, 1200, 1200);
+// const wireMat2 = new THREE.MeshBasicMaterial({color: 0xeab308,wireframe: true});
+// const wireMesh2 = new THREE.Mesh(largeBox2, wireMat2);
+// scene.add(wireMesh2);
+
+
+
+// HTML PAGES RENDER ON CUBE
 const face1 = new CSS3DObject(document.getElementById("p1"));
 const face2 = new CSS3DObject(document.getElementById("p2"));
 const face3 = new CSS3DObject(document.getElementById("p3"));
@@ -78,22 +95,69 @@ onmousedown = (e) => {
     initialClick = true;
 }
 
-// ----------HANDLES INITIAL CLICK------------------------------------------------------------------------
+// ---------------------- PLANETS AND STARS --------------------------------------------------
+const loader = new THREE.TextureLoader();
+
+// STARS
+const stars = getStarfield({ numStars: 1000, radius: 3700, size: 25 });
+scene.add(stars)
+
+// EARTH
+const earthRadius = 50;
+const sunDirection = new THREE.Vector3(-2, 0.5, 1.5).normalize();
+
+const earthGroup = new THREE.Group();
+earthGroup.rotation.z = -23.4 * Math.PI / 180;
+earthGroup.position.set(1500, 500, 5);
+scene.add(earthGroup);
+
+const earthGeo = new THREE.IcosahedronGeometry(earthRadius, 12);
+const earthMesh = new THREE.Mesh(earthGeo, getEarthMat(sunDirection));
+earthGroup.add(earthMesh);
+
+const glowMesh = new THREE.Mesh(earthGeo, getFresnelMat());
+glowMesh.scale.setScalar(1.02);
+earthGroup.add(glowMesh);
+
+// Moon
+const moonGeo = new THREE.IcosahedronGeometry(13,12);
+const moonMat = new THREE.MeshStandardMaterial({map : loader.load("./textures/06_moonmap4k.jpg"),});
+const moonMesh = new THREE.Mesh(moonGeo,moonMat);
+moonMesh.position.set(1650, 550, 0);
+scene.add(moonMesh);
+
+// Jupiter
+const jupiterGeo = new THREE.IcosahedronGeometry(100,12);
+const jupiterMat = new THREE.MeshStandardMaterial({map : loader.load("./textures/jupiter-4k.jpg"),});
+const jupiterMesh = new THREE.Mesh(jupiterGeo,jupiterMat);
+jupiterMesh.position.set(-1650, 250, -400);
+scene.add(jupiterMesh);
+
+
+// ----------RENDERING------------------------------------------------------------------------
 let lastFace = null;
 let currFace = null;
 function animate(t = 0) {
     requestAnimationFrame(animate);
 
+    // EARTH STARS PLANETS
+    stars.userData.update(t);
+    earthMesh.rotation.y += t * 0.0000001;
+    moonMesh.rotation.y += t * 0.0000001;
+    jupiterMesh.rotation.y += t * 0.000001;
+    // wireMesh1.rotation.y = -t * 0.0005;
+    // wireMesh2.rotation.y = -t * 0.0005;
+    
+
     // STATE 1: before the user clicks, spin the cube
-    if (!initialClick) {
-        CUBE.rotation.y = -t * 0.0005;
-    }
+    if (!initialClick) {CUBE.rotation.y = -t * 0.0005;}
 
     // STATE 2: first frame after the click, snap to face 1 (runs once)
     if (initialClick && !initZoom) {
         currFace = 1;
         goTo(1)
-        
+        camera.position.set(0, 0, 2500);
+
         initZoom = true;
         controls.enabled = false;
         face1.visible = true;
@@ -101,7 +165,7 @@ function animate(t = 0) {
     }
 
     if (initZoom) {
-        camera.position.z += (1152 - camera.position.z) * 0.05;
+        camera.position.z += (1152 - camera.position.z) * 0.03;
         CUBE.quaternion.slerp(targetRotation, 0.06);
     }
 
@@ -200,7 +264,8 @@ async function goTo(nextFace){
 
 function rotateFace(face){
     currFace = face;
-    let x,y = 0;
+    let x = 0;
+    let y = 0;
     if(face === 2){ y = -(Math.PI/2); }
     else if(face === 3){ y = Math.PI; }
     else if(face === 4){ y = Math.PI/2; }
