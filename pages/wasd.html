@@ -1,8 +1,10 @@
-<ul id="ui" class="fixed pointer-events-auto flex flex-col gap-3 text-white text-sm">
-  <li data-face="1" class="cursor-pointer hover:font-bold " onclick="goTo(1)"> ● About</li>
-  <li data-face="2" class="cursor-pointer hover:font-bold"  onclick="goTo(2)"> ● Projects</li>
-  <li data-face="3" class="cursor-pointer hover:font-bold"  onclick="goTo(3)"> ● Experience</li>
-  <li data-face="4" class="cursor-pointer hover:font-bold"  onclick="goTo(4)"> ● Events</li>
-  <li data-face="5" class="cursor-pointer hover:font-bold"  onclick="goTo(5)"> ● Certs</li>
-  <li data-face="6" class="cursor-pointer hover:font-bold"  onclick="goTo(6)"> ● Contact</li>
-</ul>
+<div class="flex flex-col items-center gap-2 text-white font-bold">
+  <div class="flex gap-2">
+    <div id="key-w" class="w-10 h-10 flex items-center justify-center border-2 border-white rounded-lg transition-opacity duration-300">W↑</div>
+  </div>
+  <div class="flex gap-2">
+    <div id="key-a" class="w-10 h-10 flex items-center justify-center border-2 border-white rounded-lg transition-opacity duration-300">A←</div>
+    <div id="key-s" class="w-10 h-10 flex items-center justify-center border-2 border-white rounded-lg transition-opacity duration-300">S↓</div>
+    <div id="key-d" class="w-10 h-10 flex items-center justify-center border-2 border-white rounded-lg transition-opacity duration-300">D→</div>
+  </div>
+</div>

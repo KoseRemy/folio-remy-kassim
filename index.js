@@ -48,10 +48,15 @@ scene.add(CUBE);
 
 // UI BUTTONS
 const ui = new CSS3DObject(document.getElementById("ui"));
-ui.position.set(190, -300, 100);
+ui.position.set(-420, 60, 750);
 ui.rotation.y = (Math.PI/4);
 scene.add(ui)
 
+// Keyboard Buttons
+const wasd = new CSS3DObject(document.getElementById("wasd"));
+wasd.position.set(420, -170, 800);
+wasd.rotation.y = 0;
+scene.add(wasd)
 
 // HTML PAGES RENDER ON CUBE
 const face1 = new CSS3DObject(document.getElementById("p1"));
@@ -94,6 +99,8 @@ scene.add(hemiLight);
 // Controls
 let initialClick = false;
 let initZoom = false;
+let freeMode = false;
+
 onmousedown = (e) => {
     initialClick = true;
 }
@@ -166,10 +173,11 @@ function animate(t = 0) {
         face1.visible = true;
         setTimeout(() => {face1.element.style.opacity = "1";}, 50);
         setTimeout(() => {ui.element.style.opacity = "1";}, 50);
+        setTimeout(() => {wasd.element.style.opacity = "1";}, 50);
     }
 
-    if (initZoom) {
-        camera.position.z += (1152 - camera.position.z) * 0.03;
+    if (initZoom  && !freeMode) {
+        camera.position.z += (1152 - camera.position.z) * 0.07;
         CUBE.quaternion.slerp(targetRotation, 0.06);
     }
 
@@ -233,7 +241,10 @@ window.addEventListener("keydown", (e) => {
     else if(currFace === 6){
         if (up)    {goTo(lastFace)}
     }
-    if (e.key === "Escape") {controls.enabled = true; allFaces(1)}
+    if (e.key === "Escape") {
+        controls.enabled = true; 
+        freeMode = true; 
+        allFaces(1)}
 
 });
 
@@ -244,6 +255,7 @@ async function loadPage(divId, filePath) {
     document.getElementById(divId).innerHTML = html;
 }
 await loadPage("ui", "pages/ui.html");
+await loadPage("wasd", "pages/wasd.html");
 loadPage("p1", "pages/side1.html");
 loadPage("p2", "pages/side2.html");
 loadPage("p3", "pages/side3.html");
@@ -264,6 +276,7 @@ window.addEventListener("mousemove", (e) => {
 async function goTo(nextFace){
     rotateFace(nextFace);
     face(nextFace, 1);
+    updateKeys();
 }
 
 function rotateFace(face){
@@ -314,4 +327,16 @@ function face(faceNumber, onOff){
     }else if(faceNumber==6){
         face6.visible = toggle;
     }
+}
+
+function updateKeys() {
+    let allowed = ["w", "a", "s", "d"];
+    if (currFace === 5) { allowed = ["s"]; }
+    if (currFace === 6) { allowed = ["w"]; }
+    ["w", "a", "s", "d"].forEach((k) => {
+        const key = document.getElementById("key-" + k);
+        if (!key) { return; } 
+        if (allowed.includes(k)) {key.classList.remove("opacity-20");
+        } else {key.classList.add("opacity-20");}
+    });
 }
