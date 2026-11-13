@@ -92,12 +92,12 @@ function animate(t = 0) {
 }
 animate();
 
+// Loads each html page into corresponding div
 async function loadPage(divId, filePath) {
     const response = await fetch(filePath);
     const html = await response.text();
     document.getElementById(divId).innerHTML = html;
 }
-
 loadPage("p1", "pages/side1.html");
 loadPage("p2", "pages/side2.html");
 loadPage("p3", "pages/side3.html");
