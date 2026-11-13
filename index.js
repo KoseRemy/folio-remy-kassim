@@ -159,9 +159,10 @@ function animate(t = 0) {
 
     // EARTH STARS PLANETS
     stars.userData.update(t);
-    earthMesh.rotation.y += t * 0.0000001;
+    earthMesh.rotation.y += t * 0.0000007;
     moonMesh.rotation.y += t * 0.0000001;
     jupiterMesh.rotation.y += t * 0.000001;
+    sunMesh.rotation.y += t * 0.0000005;
 
     // STATE 1: before the user clicks, spin the cube
     if (!initialClick) {
