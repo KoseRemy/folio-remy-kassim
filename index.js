@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { OrbitControls } from "jsm/controls/OrbitControls.js";
 
 const w = window.innerWidth;
 const h = window.innerHeight;
@@ -11,33 +12,44 @@ document.body.appendChild(renderer.domElement);
 const fov = 75;
 const aspect = w / h;
 const near = 0.1;
-const far = 1000;
+const far = 10;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.z = 600;
+camera.position.z = 1.5;
 
 const scene = new THREE.Scene();
 
-// DESK
-const depth = 1;
-const width = window.innerWidth;
-const height = window.innerHeight;
-const desk = new THREE.BoxGeometry(width, height, depth);
+// CUBE
+const geo = new THREE.BoxGeometry(1.0, 1.0, 1.0);
+const mat = new THREE.MeshStandardMaterial({
+    color: 0xccff
+});
+const CUBE = new THREE.Mesh(geo, mat);
+scene.add(CUBE);
 
-const textureLoader = new THREE.TextureLoader();
-let deskImg = textureLoader.load("assets/desk.jpg");
-deskImg.colorSpace = THREE.SRGBColorSpace;
-
-const texture = new THREE.MeshBasicMaterial({
-    map: deskImg});
-const desktop = new THREE.Mesh(desk, texture);
-scene.add(desktop);
+// CONTROLS
+const controls = new OrbitControls(camera, renderer.domElement);
 
 // LIGHT
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x000000);
+const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff);
 scene.add(hemiLight);
 
+// Controls
+let initialClick = false;
+onmousedown = (e) => {
+    initialClick = true;
+}
+
 function animate(t = 0) {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
+    if(!initialClick){
+        controls.update();
+        requestAnimationFrame(animate, initialClick);
+        CUBE.rotation.y = t * 0.0005;
+        renderer.render(scene, camera);
+    }else{
+        controls.update();
+        requestAnimationFrame(animate, initialClick);
+        renderer.render(scene, camera);
+    }
 }
 animate();
+
