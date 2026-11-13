@@ -79,7 +79,7 @@ onmousedown = (e) => {
     initialClick = true;
 }
 
-// HANDLES INITIAL CLICK
+// ----------HANDLES INITIAL CLICK------------------------------------------------------------------------
 let lastFace = null;
 let currFace = null;
 function animate(t = 0) {
@@ -93,14 +93,17 @@ function animate(t = 0) {
     // STATE 2: first frame after the click, snap to face 1 (runs once)
     if (initialClick && !initZoom) {
         currFace = 1;
-        CUBE.rotation.y = 0;
-        camera.position.z = 1152;
+        goTo(1)
+        
         initZoom = true;
         controls.enabled = false;
         face1.visible = true;
     }
 
-    if (initZoom) {CUBE.quaternion.slerp(targetRotation, 0.08);}
+    if (initZoom) {
+        camera.position.z += (1152 - camera.position.z) * 0.05;
+        CUBE.quaternion.slerp(targetRotation, 0.08);
+    }
 
     controls.update();
     renderer.render(scene, camera);
@@ -179,6 +182,14 @@ loadPage("p3", "pages/side3.html");
 loadPage("p4", "pages/side4.html");
 loadPage("p5", "pages/side5.html");
 loadPage("p6", "pages/side6.html");
+
+// MOUSE TRACKING
+let mouseX = 0;
+let mouseY = 0;
+window.addEventListener("mousemove", (e) => {
+    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+});
 
 
 // ============= HELPER FUNCTIONS ============================================
