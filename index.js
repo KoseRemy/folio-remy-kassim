@@ -17,8 +17,7 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(w, h);
 document.body.appendChild(renderer.domElement);
 
-
-
+window.goTo = goTo;
 
 // CAMERA
 const fov = 75;
@@ -31,7 +30,6 @@ camera.position.set(-900, 1100, 2500);
 const scene = new THREE.Scene();
 
 // CUBE 
-
 const geo = new THREE.BoxGeometry(1000, 1000, 1000);
 const mat = new THREE.MeshStandardMaterial({color: 0x27272a});
 const CUBE = new THREE.Mesh(geo, mat);
@@ -48,6 +46,11 @@ scene.add(CUBE);
 // const wireMesh2 = new THREE.Mesh(largeBox2, wireMat2);
 // scene.add(wireMesh2);
 
+// UI BUTTONS
+const ui = new CSS3DObject(document.getElementById("ui"));
+ui.position.set(190, -300, 100);
+ui.rotation.y = (Math.PI/4);
+scene.add(ui)
 
 
 // HTML PAGES RENDER ON CUBE
@@ -130,7 +133,7 @@ scene.add(moonMesh);
 const jupiterGeo = new THREE.IcosahedronGeometry(100,12);
 const jupiterMat = new THREE.MeshStandardMaterial({map : loader.load("./textures/jupiter-4k.jpg"),});
 const jupiterMesh = new THREE.Mesh(jupiterGeo,jupiterMat);
-jupiterMesh.position.set(-1650, 250, -400);
+jupiterMesh.position.set(-1650, -450, -400);
 scene.add(jupiterMesh);
 
 
@@ -162,6 +165,7 @@ function animate(t = 0) {
         controls.enabled = false;
         face1.visible = true;
         setTimeout(() => {face1.element.style.opacity = "1";}, 50);
+        setTimeout(() => {ui.element.style.opacity = "1";}, 50);
     }
 
     if (initZoom) {
@@ -239,7 +243,7 @@ async function loadPage(divId, filePath) {
     const html = await response.text();
     document.getElementById(divId).innerHTML = html;
 }
-
+await loadPage("ui", "pages/ui.html");
 loadPage("p1", "pages/side1.html");
 loadPage("p2", "pages/side2.html");
 loadPage("p3", "pages/side3.html");
