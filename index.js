@@ -59,6 +59,9 @@ CUBE.add(face4);
 CUBE.add(face5);
 CUBE.add(face6);
 
+// Target Zoom
+const targetRotation = new THREE.Quaternion();
+
 // 1. Cube Spins : All Faces Invisible
 allFaces(0)
 
@@ -97,6 +100,8 @@ function animate(t = 0) {
         face1.visible = true;
     }
 
+    if (initZoom) {CUBE.quaternion.slerp(targetRotation, 0.08);}
+
     controls.update();
     renderer.render(scene, camera);
     cssRenderer.render(scene, camera);
@@ -104,7 +109,7 @@ function animate(t = 0) {
 animate();
 
 
-// ================ KEYBOARD CONTROLS =================================================================
+// ================ KEYBOARD CONTROL AND MOVEMENT LOGIC =================================================================
 
 let rotateFace1 = 0;
 let rotateFace2 = 0;
@@ -155,7 +160,7 @@ window.addEventListener("keydown", (e) => {
     }
     // FACE 6 (bottom)
     else if(currFace === 6){
-        if (up)    {goTo(1)}
+        if (up)    {goTo(lastFace)}
     }
     if (e.key === "Escape") {controls.enabled = true; allFaces(1)}
 
@@ -175,20 +180,22 @@ loadPage("p4", "pages/side4.html");
 loadPage("p5", "pages/side5.html");
 loadPage("p6", "pages/side6.html");
 
-function goTo(nextFace){
-    face(currFace, 0);
+
+// ============= HELPER FUNCTIONS ============================================
+async function goTo(nextFace){
     rotateFace(nextFace);
     face(nextFace, 1);
 }
 
 function rotateFace(face){
     currFace = face;
-    if(face === 1){ CUBE.rotation.set(0, 0, 0); }
-    else if(face === 2){ CUBE.rotation.set(0, -(Math.PI/2), 0); }
-    else if(face === 3){ CUBE.rotation.set(0, Math.PI, 0); }
-    else if(face === 4){ CUBE.rotation.set(0, Math.PI/2, 0); }
-    else if(face === 5){ CUBE.rotation.set(Math.PI/2, 0, 0); }
-    else if(face === 6){ CUBE.rotation.set(-(Math.PI/2), 0, 0); }
+    let x,y = 0;
+    if(face === 2){ y = -(Math.PI/2); }
+    else if(face === 3){ y = Math.PI; }
+    else if(face === 4){ y = Math.PI/2; }
+    else if(face === 5){ x = Math.PI/2; }
+    else if(face === 6){ x = -(Math.PI/2); }
+    targetRotation.setFromEuler(new THREE.Euler(x, y, 0));
 }
 
 // HELPERS
