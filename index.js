@@ -27,10 +27,9 @@ camera.position.z = 2500;
 
 const scene = new THREE.Scene();
 
-// CUBE
+// CUBE 
 const geo = new THREE.BoxGeometry(1000, 1000, 1000);
-const mat = new THREE.MeshStandardMaterial({color: 0xccff});
-
+const mat = new THREE.MeshStandardMaterial({color: 0x27272a});
 const CUBE = new THREE.Mesh(geo, mat);
 scene.add(CUBE);
 
@@ -98,6 +97,7 @@ function animate(t = 0) {
         initZoom = true;
         controls.enabled = false;
         face1.visible = true;
+        setTimeout(() => {face1.element.style.opacity = "1";}, 50);
     }
 
     if (initZoom) {
