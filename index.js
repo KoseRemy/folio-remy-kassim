@@ -151,13 +151,41 @@ jupiterMesh.rotation.z = -3.13 * Math.PI / 180;
 jupiterMesh.position.set(-1650, -350, -520);
 scene.add(jupiterMesh);
 
-// JUPITER PANEL
+// ALIEN
 const jupiterPanel = new CSS3DObject(document.getElementById("jupiter"));
 jupiterPanel.position.set(-1650, -300, -520);
 scene.add(jupiterPanel);
 loadPage("jupiter", "pages/jupiter.html");
 
+// URANUS
+const uranusGeo = new THREE.IcosahedronGeometry(35,12);
+const uranusMat = new THREE.MeshStandardMaterial({map : loader.load("./textures/uranus.jpg"),});
+const uranusMesh = new THREE.Mesh(uranusGeo,uranusMat);
+uranusMesh.rotation.z = -3.13 * Math.PI / 180;
+uranusMesh.position.set(1450, -1050, -520);
+scene.add(uranusMesh);
 
+// SATURN
+const saturnGeo = new THREE.IcosahedronGeometry(82,12);
+const saturnMat = new THREE.MeshStandardMaterial({map : loader.load("./textures/saturn.jpg"),});
+const saturnMesh = new THREE.Mesh(saturnGeo,saturnMat);
+saturnMesh.rotation.z = -3.13 * Math.PI / 180;
+saturnMesh.position.set(2850, -350, -800);
+scene.add(saturnMesh);
+
+// SATURNS RING
+const saturnRingWidth = 500;
+const saturnRingHeight = 500;
+const saturnRingGeo = new THREE.PlaneGeometry(saturnRingWidth, saturnRingHeight);
+const saturnRingMat = new THREE.MeshStandardMaterial({
+    map : loader.load("./textures/saturn-ring.png"),
+    transparent: true,
+    side : THREE.DoubleSide});
+const saturnRingMesh = new THREE.Mesh(saturnRingGeo,saturnRingMat);
+saturnRingMesh.rotation.x = -Math.PI / 2;
+saturnRingMesh.rotation.y = 26.7 * Math.PI / 180;
+saturnRingMesh.position.set(2850, -350, -800);
+scene.add(saturnRingMesh);
 
 // ----------RENDERING & CONTROLS------------------------------------------------------------------------
 let lastFace = null;
@@ -169,15 +197,20 @@ let freeMode = false;
 let initialClick = false;
 onmousedown = (e) => {initialClick = true;}
 
+let frame = 0;
+
 function animate(t = 0) {
     requestAnimationFrame(animate);
 
     // EARTH STARS PLANETS SPIN
-    stars.userData.update(t);
-    earthMesh.rotation.y += t * 0.0000007;
-    moonMesh.rotation.y += t * 0.0000001;
-    jupiterMesh.rotation.y += t * 0.000001;
-    sunMesh.rotation.y += t * 0.0000005;
+    frame++;
+    if(frame % 4 == 0){stars.userData.update(t);}
+    earthMesh.rotation.y   += 0.005;
+    moonMesh.rotation.y    += 0.00018;
+    jupiterMesh.rotation.y += 0.0121;
+    saturnMesh.rotation.y  += 0.0113;
+    uranusMesh.rotation.y  -= 0.0070;
+    sunMesh.rotation.y     += 0.0002;
 
     // STATE 1: before the user clicks, spin the cube
     if (!initialClick) {
@@ -203,8 +236,9 @@ function animate(t = 0) {
     }
 
     if (initZoom  && !freeMode) {
+        const rotationSpeed = 0.30; // higher = faster.
         camera.position.z += (1152 - camera.position.z) * 0.15;
-        CUBE.quaternion.slerp(targetRotation, 0.06);
+        CUBE.quaternion.slerp(targetRotation, rotationSpeed);
     }
 
     controls.update();
