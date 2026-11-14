@@ -4,6 +4,8 @@ import { CSS3DRenderer, CSS3DObject } from 'jsm/renderers/CSS3DRenderer.js';
 import getStarfield from "./src/getStarfield.js";
 import { getEarthMat } from "./src/getEarthMat.js";
 import { getFresnelMat } from "./src/getFresnelMat.js";
+import { setSkySphere_JPG } from "./src/SkysphereHelper.js";
+
 
 // RENDERING FOR CSS3D OBJECTS
 const cssRenderer = new CSS3DRenderer();
@@ -23,12 +25,14 @@ window.goToFace = goToFace;
 const fov = 75;
 const aspect = w / h;
 const near = 0.01;
-const far = 10000;
-const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+const renderMax = 20000;
+const camera = new THREE.PerspectiveCamera(fov, aspect, near, renderMax);
 camera.position.set(-900, 1100, 2500);
 
 // ---------- ADDING ITEMS ------------------------------------------------------------
 const scene = new THREE.Scene();
+
+setSkySphere_JPG(scene,"./textures/galaxy.jpg")
 
 // CUBE 
 const geo = new THREE.BoxGeometry(1000, 1000, 1000);
@@ -90,24 +94,15 @@ CUBE.add(face6);
 // Target Zoom
 const targetRotation = new THREE.Quaternion();
 
-// 1. Cube Spins : All Faces Invisible
+// Initially - All Cube Faces Invisible
 allFaces(0)
 
-// CONTROLS
+// ORBIT CONTROLS
 const controls = new OrbitControls(camera, cssRenderer.domElement);
 
 // LIGHT
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff);
 scene.add(hemiLight);
-
-// Controls
-let initialClick = false;
-let initZoom = false;
-let freeMode = false;
-
-onmousedown = (e) => {
-    initialClick = true;
-}
 
 // ---------------------- PLANETS AND STARS --------------------------------------------------
 const loader = new THREE.TextureLoader();
@@ -160,9 +155,16 @@ loadPage("jupiter", "pages/jupiter.html");
 
 
 
-// ----------RENDERING------------------------------------------------------------------------
+// ----------RENDERING & CONTROLS------------------------------------------------------------------------
 let lastFace = null;
 let currFace = null;
+
+// Controls
+let initZoom = false;
+let freeMode = false;
+let initialClick = false;
+onmousedown = (e) => {initialClick = true;}
+
 function animate(t = 0) {
     requestAnimationFrame(animate);
 
@@ -283,6 +285,7 @@ loadPage("p3", "pages/side3.html");
 loadPage("p4", "pages/side4.html");
 loadPage("p5", "pages/side5.html");
 loadPage("p6", "pages/side6.html");
+
 
 // ============= HELPER FUNCTIONS ============================================
 
