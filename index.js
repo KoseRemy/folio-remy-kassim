@@ -27,6 +27,7 @@ const far = 10000;
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 camera.position.set(-900, 1100, 2500);
 
+// ---------- ADDING ITEMS ------------------------------------------------------------
 const scene = new THREE.Scene();
 
 // CUBE 
@@ -47,11 +48,19 @@ ui.position.set(-420, 60, 750);
 ui.rotation.y = (Math.PI/4);
 scene.add(ui)
 
-// Keyboard Buttons
+// UI Keyboard Buttons
 const wasd = new CSS3DObject(document.getElementById("wasd"));
 wasd.position.set(420, -170, 800);
 wasd.rotation.y = 0;
 scene.add(wasd)
+
+// UI : Initial Text
+const initial = new CSS3DObject(document.getElementById("initial"));
+initial.position.set(-848, 1110, 2350);
+initial.rotation.y = 163;
+initial.scale.setScalar(0.5);
+scene.add(initial)
+
 
 // HTML PAGES RENDER ON CUBE
 const face1 = new CSS3DObject(document.getElementById("p1"));
@@ -267,6 +276,7 @@ async function loadPage(divId, filePath) {
 }
 await loadPage("ui", "pages/ui.html");
 await loadPage("wasd", "pages/wasd.html");
+await loadPage("initial", "pages/initial.html");
 loadPage("p1", "pages/side1.html");
 loadPage("p2", "pages/side2.html");
 loadPage("p3", "pages/side3.html");
@@ -274,21 +284,7 @@ loadPage("p4", "pages/side4.html");
 loadPage("p5", "pages/side5.html");
 loadPage("p6", "pages/side6.html");
 
-// MOUSE TRACKING
-let mouseX = 0;
-let mouseY = 0;
-window.addEventListener("mousemove", (e) => {
-    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-    mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-});
-
-
 // ============= HELPER FUNCTIONS ============================================
-async function goTo(nextFace){
-    rotateFace(nextFace);
-    face(nextFace, 1);
-    updateKeys();
-}
 
 function rotateFace(face){
     currFace = face;
@@ -302,7 +298,6 @@ function rotateFace(face){
     targetRotation.setFromEuler(new THREE.Euler(x, y, 0));
 }
 
-// HELPERS
 function allFaces(onOff){
     if(onOff==0){
         face(1,0);
@@ -350,4 +345,10 @@ function updateKeys() {
         if (allowed.includes(k)) {key.classList.remove("opacity-20");
         } else {key.classList.add("opacity-20");}
     });
+}
+
+async function goTo(nextFace){
+    rotateFace(nextFace);
+    face(nextFace, 1);
+    updateKeys();
 }
