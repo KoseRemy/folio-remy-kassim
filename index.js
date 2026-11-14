@@ -196,6 +196,15 @@ saturnRingMesh.position.set(2850, -350, -800);
 scene.add(saturnRingMesh);
 explode(scene, saturnRingMesh);
 
+// MARS
+const marsGeo = new THREE.IcosahedronGeometry(82,12);
+const marsMat = new THREE.MeshStandardMaterial({map : loader.load("./textures/mars.jpg"),});
+const marsMesh = new THREE.Mesh(marsGeo,marsMat);
+marsMesh.rotation.z = -3.13 * Math.PI / 180;
+marsMesh.position.set(-2350, 950, -520);
+scene.add(marsMesh);
+explode(scene, marsMesh);
+
 // ----------RENDERING & CONTROLS------------------------------------------------------------------------
 let lastFace = null;
 let currFace = null;
