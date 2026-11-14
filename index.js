@@ -125,7 +125,7 @@ scene.add(stars)
 
 // EARTH
 const earthRadius = 50;
-const sunDirection = new THREE.Vector3(-5, 0.5, -2.5).normalize();
+const sunDirection = new THREE.Vector3(5, 0.5, 2.5).normalize();
 const earthGroup = new THREE.Group();
 earthGroup.rotation.z = -23.4 * Math.PI / 180;
 earthGroup.position.set(1400, 500, 5);
