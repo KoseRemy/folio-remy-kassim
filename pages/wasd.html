@@ -1,11 +1,24 @@
 <div class="flex flex-col items-center gap-2 text-white font-bold">
   <div class="flex gap-2">
-    <div id="key-w" class="w-10 h-10 flex items-center justify-center border-2 border-white transition-opacity duration-300">W↑</div>
+    <div id="key-w" class="cursor-pointer hover:font-bold w-10 h-10 flex items-center justify-center border-2 border-white transition-opacity duration-300"
+    onclick= "move('up')">W↑</div>
   </div>
   <div class="flex gap-2">
-    <div id="key-a" class="w-10 h-10 flex items-center justify-center border-2 border-white transition-opacity duration-300">A←</div>
-    <div id="key-s" class="w-10 h-10 flex items-center justify-center border-2 border-white transition-opacity duration-300">S↓</div>
-    <div id="key-d" class="w-10 h-10 flex items-center justify-center border-2 border-white transition-opacity duration-300">D→</div>
+    <div 
+        id="key-a" 
+        class="cursor-pointer hover:font-bold w-10 h-10 flex items-center justify-center border-2 border-white transition-opacity duration-300"
+        onclick= "move('left')">A←</div> 
+    <div 
+        id="key-s" 
+        class="cursor-pointer hover:font-bold w-10 h-10 flex items-center justify-center border-2 border-white transition-opacity duration-300"
+        onclick= "move('down')">S↓</div>
+    <div 
+        id="key-d" 
+        class="cursor-pointer hover:font-bold w-10 h-10 flex items-center justify-center border-2 border-white transition-opacity duration-300"
+        onclick= "move('right')">D→</div>
   </div>
-  <div id="key-esc" class="w-10 flex items-center transition-opacity duration-300">esc</div>
+    <div 
+      id="key-esc" 
+      class="cursor-pointer hover:font-bold w-50 text-center transition-opacity duration-300"
+      onclick="freeModeSet(1)">esc(free mode)</div>
 </div>

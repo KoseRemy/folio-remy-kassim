@@ -6,6 +6,7 @@ import { getEarthMat } from "./src/getEarthMat.js";
 import { getFresnelMat } from "./src/getFresnelMat.js";
 import { setSkySphere_JPG } from "./src/SkysphereHelper.js";
 import { explode } from "./src/explodePlanet.js";
+import { wasdManual } from "./src/wasdManual.js";
 
 // RENDERING FOR CSS3D OBJECTS
 const cssRenderer = new CSS3DRenderer();
@@ -217,6 +218,10 @@ onmousedown = (e) => {initialClick = true;}
 
 let frame = 0;
 
+function state1(){ return !initialClick;             } // Cube spins 
+function state2(){ return initialClick && !initZoom; } // Zooms into Cube
+function state3(){ return initZoom && !freeMode    ; } // Content Mode
+
 function animate(t = 0) {
     requestAnimationFrame(animate);
 
@@ -231,14 +236,14 @@ function animate(t = 0) {
     sunMesh.rotation.y     += 0.0002;
 
     // STATE 1: before the user clicks, spin the cube
-    if (!initialClick) {
+    if ( state1() ) {
         CUBE.visible = false;
         CUBE.rotation.y = -t * 0.0005;
         wireMesh.rotation.y = -t * 0.0005;
     }
 
     // STATE 2: first frame after the click, snap to face 1 (runs once)
-    if (initialClick && !initZoom) {
+    if ( state2() ) {
         currFace = 1;
         CUBE.visible = true;
         wireMesh.visible = false;
@@ -253,7 +258,7 @@ function animate(t = 0) {
         setTimeout(() => {wasd.element.style.opacity = "1";}, 50);
     }
 
-    if (initZoom  && !freeMode) {
+    if ( state3() ) { // Normal Selection
         const rotationSpeed = 0.30; // higher = faster.
         camera.position.z += (1152 - camera.position.z) * 0.15;
         CUBE.quaternion.slerp(targetRotation, rotationSpeed);
@@ -268,13 +273,12 @@ animate();
 
 // ================ KEYBOARD CONTROL AND MOVEMENT LOGIC =================================================================
 
-let rotateFace1 = 0;
-let rotateFace2 = 0;
-let rotateFace3 = 0;
-let rotateFace4 = 0;
-let rotateFace5 = 0;
-let rotateFace6 = 0;
+window.move = move;
+function move(input){
+    lastFace = wasdManual(input, currFace, lastFace, goToFace)
+}
 
+// Keyboard Input Functionality
 window.addEventListener("keydown", (e) => {
     if(initialClick === false){return}
 
@@ -311,19 +315,15 @@ window.addEventListener("keydown", (e) => {
         if (down)  {goToFace(6)}
         if (right) {goToFace(1)}
     }
-    // FACE 5 (top)
-    else if(currFace === 5){
-        if (down)  {goToFace(lastFace)}
-    }
-    // FACE 6 (bottom)
-    else if(currFace === 6){
-        if (up)    {goToFace(lastFace)}
-    }
+    
+    else if(currFace === 5){if(down){goToFace(lastFace)}} // FACE 5 (top)
+    else if(currFace === 6){if(up){goToFace(lastFace)} // FACE 6 (bottom)
+}
     if (e.key === "Escape") {
-        controls.enabled = true; 
-        freeMode = true; 
-        allFaces(1)}
-
+        if(freeMode){freeModeSet(0); }// if freeMode -> disable
+        if(!freeMode){freeModeSet(1);}// if !freeMode -> enable
+    }
+        
 });
 
 // Loads each html page into corresponding div
@@ -342,8 +342,31 @@ loadPage("p4", "pages/side4.html");
 loadPage("p5", "pages/side5.html");
 loadPage("p6", "pages/side6.html");
 
-
 // ============= HELPER FUNCTIONS ============================================
+
+window.freeModeSet = freeModeSet;
+export function freeModeSet(i){
+if(i===1){
+    controls.enabled = true; 
+    camera.position.set(0, 100, 1500);
+    freeMode = true; 
+    allFaces(1)  
+}
+if(i===0){
+    controls.enabled = false; 
+    freeMode = false;
+    toInfoState();
+}
+}
+
+function toInfoState(){
+    // Confusing
+    // animate function has states which forces camera zoom types according to booleans.
+    // These boolean change activates the normal content view state.
+    initialClick = true;
+    initZoom = false;
+    freeMode = false;
+}
 
 function rotateFace(face){
     currFace = face;
@@ -359,19 +382,11 @@ function rotateFace(face){
 
 function allFaces(onOff){
     if(onOff==0){
-        face(1,0);
-        face(2,0);
-        face(3,0);
-        face(4,0);
-        face(5,0);
-        face(6,0);
+        face(1,0);face(2,0);face(3,0);
+        face(4,0);face(5,0);face(6,0);
     }else if(onOff==1){
-        face(1,1);
-        face(2,1);
-        face(3,1);
-        face(4,1);
-        face(5,1);
-        face(6,1);
+        face(1,1);face(2,1);face(3,1);
+        face(4,1);face(5,1);face(6,1);
     }else{return} 
 }
 
@@ -379,19 +394,12 @@ function face(faceNumber, onOff){
     let toggle = false;
     if(onOff=="1"){ toggle = true;}
 
-    if(faceNumber==1){
-        face1.visible = toggle;
-    }else if(faceNumber==2){
-        face2.visible = toggle;
-    }else if(faceNumber==3){
-        face3.visible = toggle;
-    }else if(faceNumber==4){
-        face4.visible = toggle;
-    }else if(faceNumber==5){
-        face5.visible = toggle;
-    }else if(faceNumber==6){
-        face6.visible = toggle;
-    }
+    if(faceNumber==1){face1.visible = toggle;
+    }else if(faceNumber==2){face2.visible = toggle;
+    }else if(faceNumber==3){face3.visible = toggle;
+    }else if(faceNumber==4){face4.visible = toggle;
+    }else if(faceNumber==5){face5.visible = toggle;
+    }else if(faceNumber==6){face6.visible = toggle;}
 }
 
 function updateKeys() {
@@ -407,6 +415,7 @@ function updateKeys() {
 }
 
 async function goToFace(nextFace){
+    if(freeMode){toInfoState()}
     rotateFace(nextFace);
     face(nextFace, 1);
     updateKeys();
