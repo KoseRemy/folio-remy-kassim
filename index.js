@@ -7,6 +7,7 @@ import { getFresnelMat } from "./src/getFresnelMat.js";
 import { setSkySphere_JPG } from "./src/SkysphereHelper.js";
 import { explode } from "./src/explodePlanet.js";
 import { wasdManual } from "./src/wasdManual.js";
+import { loadProjects } from "./src/loadProjects.js";
 
 // RENDERING FOR CSS3D OBJECTS
 const cssRenderer = new CSS3DRenderer();
@@ -336,7 +337,7 @@ await loadPage("ui", "pages/ui.html");
 await loadPage("wasd", "pages/wasd.html");
 await loadPage("initial", "pages/initial.html");
 loadPage("p1", "pages/side1.html");
-loadPage("p2", "pages/side2.html");
+loadProjects("p2", "data/projects.json");
 loadPage("p3", "pages/side3.html");
 loadPage("p4", "pages/side4.html");
 loadPage("p5", "pages/side5.html");
