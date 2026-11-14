@@ -5,12 +5,13 @@ import getStarfield from "./src/getStarfield.js";
 import { getEarthMat } from "./src/getEarthMat.js";
 import { getFresnelMat } from "./src/getFresnelMat.js";
 import { setSkySphere_JPG } from "./src/SkysphereHelper.js";
-
+import { explode } from "./src/explodePlanet.js";
 
 // RENDERING FOR CSS3D OBJECTS
 const cssRenderer = new CSS3DRenderer();
 cssRenderer.setSize(window.innerWidth, window.innerHeight);
 cssRenderer.domElement.style.position = "absolute";
+cssRenderer.domElement.style.pointerEvents = "none";
 cssRenderer.domElement.style.top = "0px";
 document.body.appendChild(cssRenderer.domElement);
 const w = window.innerWidth;
@@ -99,7 +100,7 @@ const targetRotation = new THREE.Quaternion();
 allFaces(0)
 
 // ORBIT CONTROLS
-const controls = new OrbitControls(camera, cssRenderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
 
 // ---------------------- PLANETS AND STARS --------------------------------------------------
 const loader = new THREE.TextureLoader();
@@ -112,6 +113,7 @@ const sunMesh = new THREE.Mesh(sunGeo,sunMat);
 sunMesh.rotation.z = -7.25 * Math.PI / 180;
 sunMesh.position.set(0, 1250, 2500);
 scene.add(sunMesh);
+explode(scene, sunMesh);
 
 // LIGHT
 const sunLight = new THREE.DirectionalLight(0xffffff, 3);
@@ -136,8 +138,7 @@ earthGroup.add(earthMesh);
 const glowMesh = new THREE.Mesh(earthGeo, getFresnelMat());
 glowMesh.scale.setScalar(1.02);
 earthGroup.add(glowMesh);
-
-
+explode(scene, earthGroup);
 
 // Moon
 const moonGeo = new THREE.IcosahedronGeometry(13,12);
@@ -146,6 +147,7 @@ const moonMesh = new THREE.Mesh(moonGeo,moonMat);
 moonMesh.rotation.z = -6.68 * Math.PI / 180;
 moonMesh.position.set(1650, 550, 0);
 scene.add(moonMesh);
+explode(scene, moonMesh);
 
 // Jupiter
 const jupiterGeo = new THREE.IcosahedronGeometry(100,12);
@@ -168,6 +170,7 @@ const uranusMesh = new THREE.Mesh(uranusGeo,uranusMat);
 uranusMesh.rotation.z = -3.13 * Math.PI / 180;
 uranusMesh.position.set(1450, -1050, -520);
 scene.add(uranusMesh);
+explode(scene, uranusMesh);
 
 // SATURN
 const saturnGeo = new THREE.IcosahedronGeometry(82,12);
@@ -176,6 +179,7 @@ const saturnMesh = new THREE.Mesh(saturnGeo,saturnMat);
 saturnMesh.rotation.z = -3.13 * Math.PI / 180;
 saturnMesh.position.set(2850, -350, -800);
 scene.add(saturnMesh);
+explode(scene, saturnMesh);
 
 // SATURNS RING
 const saturnRingWidth = 500;
@@ -190,6 +194,7 @@ saturnRingMesh.rotation.x = -Math.PI / 2;
 saturnRingMesh.rotation.y = 26.7 * Math.PI / 180;
 saturnRingMesh.position.set(2850, -350, -800);
 scene.add(saturnRingMesh);
+explode(scene, saturnRingMesh);
 
 // ----------RENDERING & CONTROLS------------------------------------------------------------------------
 let lastFace = null;
