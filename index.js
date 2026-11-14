@@ -144,12 +144,12 @@ scene.add(moonMesh);
 const jupiterGeo = new THREE.IcosahedronGeometry(100,12);
 const jupiterMat = new THREE.MeshStandardMaterial({map : loader.load("./textures/jupiter-4k.jpg"),});
 const jupiterMesh = new THREE.Mesh(jupiterGeo,jupiterMat);
-jupiterMesh.position.set(-1650, -450, -400);
+jupiterMesh.position.set(-1650, -350, -520);
 scene.add(jupiterMesh);
 
 // JUPITER PANEL
 const jupiterPanel = new CSS3DObject(document.getElementById("jupiter"));
-jupiterPanel.position.set(-1650, -400, -400);
+jupiterPanel.position.set(-1650, -300, -520);
 scene.add(jupiterPanel);
 loadPage("jupiter", "pages/jupiter.html");
 
