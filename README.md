@@ -1,4 +1,4 @@
-# Remy Kassim — Folio (WIP!)
+# Remy Kassim — Folio
 
 An interactive portfolio built as a 3D cube in space. Where Each face of the cube is a page.
 Includes my photography portfolio
