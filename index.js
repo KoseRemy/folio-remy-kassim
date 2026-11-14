@@ -101,12 +101,23 @@ allFaces(0)
 // ORBIT CONTROLS
 const controls = new OrbitControls(camera, cssRenderer.domElement);
 
-// LIGHT
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff);
-scene.add(hemiLight);
-
 // ---------------------- PLANETS AND STARS --------------------------------------------------
 const loader = new THREE.TextureLoader();
+
+// SUN
+const sunRadius = 300;
+const sunGeo = new THREE.IcosahedronGeometry(sunRadius,12);
+const sunMat = new THREE.MeshBasicMaterial({map : loader.load("./textures/sun.jpg"),});
+const sunMesh = new THREE.Mesh(sunGeo,sunMat);
+sunMesh.rotation.z = -7.25 * Math.PI / 180;
+sunMesh.position.set(0, 1250, 2500);
+scene.add(sunMesh);
+
+// LIGHT
+const sunLight = new THREE.DirectionalLight(0xffffff, 3);
+sunLight.position.set(0, 1250, 2500);
+scene.add(sunLight)
+
 
 // STARS
 const stars = getStarfield({ numStars: 1000, radius: 3700, size: 25 });
@@ -114,7 +125,7 @@ scene.add(stars)
 
 // EARTH
 const earthRadius = 50;
-const sunDirection = new THREE.Vector3(-2, 0.5, 1.5).normalize();
+const sunDirection = new THREE.Vector3(-5, 0.5, -2.5).normalize();
 const earthGroup = new THREE.Group();
 earthGroup.rotation.z = -23.4 * Math.PI / 180;
 earthGroup.position.set(1400, 500, 5);
@@ -126,14 +137,7 @@ const glowMesh = new THREE.Mesh(earthGeo, getFresnelMat());
 glowMesh.scale.setScalar(1.02);
 earthGroup.add(glowMesh);
 
-// SUN
-const sunRadius = 300;
-const sunGeo = new THREE.IcosahedronGeometry(sunRadius,12);
-const sunMat = new THREE.MeshStandardMaterial({map : loader.load("./textures/sun.jpg"),});
-const sunMesh = new THREE.Mesh(sunGeo,sunMat);
-sunMesh.rotation.z = -7.25 * Math.PI / 180;
-sunMesh.position.set(-3650, 1750, -2000);
-scene.add(sunMesh);
+
 
 // Moon
 const moonGeo = new THREE.IcosahedronGeometry(13,12);
@@ -177,7 +181,7 @@ scene.add(saturnMesh);
 const saturnRingWidth = 500;
 const saturnRingHeight = 500;
 const saturnRingGeo = new THREE.PlaneGeometry(saturnRingWidth, saturnRingHeight);
-const saturnRingMat = new THREE.MeshStandardMaterial({
+const saturnRingMat = new THREE.MeshBasicMaterial({
     map : loader.load("./textures/saturn-ring.png"),
     transparent: true,
     side : THREE.DoubleSide});
