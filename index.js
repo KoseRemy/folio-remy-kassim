@@ -32,6 +32,7 @@ camera.position.set(-900, 1100, 2500);
 // ---------- ADDING ITEMS ------------------------------------------------------------
 const scene = new THREE.Scene();
 
+// SKY SPHERE GALAXY 
 setSkySphere_JPG(scene,"./textures/galaxy.jpg")
 
 // CUBE 
