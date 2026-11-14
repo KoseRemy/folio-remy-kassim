@@ -166,7 +166,7 @@ let currFace = null;
 function animate(t = 0) {
     requestAnimationFrame(animate);
 
-    // EARTH STARS PLANETS
+    // EARTH STARS PLANETS SPIN
     stars.userData.update(t);
     earthMesh.rotation.y += t * 0.0000007;
     moonMesh.rotation.y += t * 0.0000001;
@@ -197,7 +197,7 @@ function animate(t = 0) {
     }
 
     if (initZoom  && !freeMode) {
-        camera.position.z += (1152 - camera.position.z) * 0.07;
+        camera.position.z += (1152 - camera.position.z) * 0.15;
         CUBE.quaternion.slerp(targetRotation, 0.06);
     }
 
