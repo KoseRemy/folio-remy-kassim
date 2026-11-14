@@ -17,7 +17,7 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(w, h);
 document.body.appendChild(renderer.domElement);
 
-window.goTo = goTo;
+window.goToFace = goToFace;
 
 // CAMERA
 const fov = 75;
@@ -185,7 +185,7 @@ function animate(t = 0) {
         currFace = 1;
         CUBE.visible = true;
         wireMesh.visible = false;
-        goTo(1)
+        goToFace(1)
         camera.position.set(0, 0, 2500);
 
         initZoom = true;
@@ -227,39 +227,39 @@ window.addEventListener("keydown", (e) => {
 
     if(currFace === 1){
         lastFace = currFace;
-        if (up)    {goTo(5);}
-        if (left)  {goTo(4)}
-        if (down)  {goTo(6)}
-        if (right) {goTo(2)}
+        if (up)    {goToFace(5);}
+        if (left)  {goToFace(4)}
+        if (down)  {goToFace(6)}
+        if (right) {goToFace(2)}
     }
     else if(currFace === 2){
         lastFace = currFace;
-        if (up)    {goTo(5)}
-        if (left)  {goTo(1)}
-        if (down)  {goTo(6)}
-        if (right) {goTo(3)}
+        if (up)    {goToFace(5)}
+        if (left)  {goToFace(1)}
+        if (down)  {goToFace(6)}
+        if (right) {goToFace(3)}
     }
     else if(currFace === 3){
         lastFace = currFace;
-        if (up)    {goTo(5)}
-        if (left)  {goTo(2)}
-        if (down)  {goTo(6)}
-        if (right) {goTo(4)}
+        if (up)    {goToFace(5)}
+        if (left)  {goToFace(2)}
+        if (down)  {goToFace(6)}
+        if (right) {goToFace(4)}
     }
     else if(currFace === 4){
         lastFace = currFace;
-        if (up)    {goTo(5)}
-        if (left)  {goTo(3)}
-        if (down)  {goTo(6)}
-        if (right) {goTo(1)}
+        if (up)    {goToFace(5)}
+        if (left)  {goToFace(3)}
+        if (down)  {goToFace(6)}
+        if (right) {goToFace(1)}
     }
     // FACE 5 (top)
     else if(currFace === 5){
-        if (down)  {goTo(lastFace)}
+        if (down)  {goToFace(lastFace)}
     }
     // FACE 6 (bottom)
     else if(currFace === 6){
-        if (up)    {goTo(lastFace)}
+        if (up)    {goToFace(lastFace)}
     }
     if (e.key === "Escape") {
         controls.enabled = true; 
@@ -347,7 +347,7 @@ function updateKeys() {
     });
 }
 
-async function goTo(nextFace){
+async function goToFace(nextFace){
     rotateFace(nextFace);
     face(nextFace, 1);
     updateKeys();
