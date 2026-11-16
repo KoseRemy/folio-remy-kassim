@@ -1,7 +1,6 @@
 [
   {
     "name": "RMIT CSIT Society Website (contributor)",
-    "tag": "Team",
     "type": "Website",
     "stack": "",
     "desc": "in progress.....",
@@ -9,24 +8,21 @@
   },
   {
     "name": "3D Interactive Resume (this site)",
-    "tag": "Personal",
     "type": "Website",
     "stack": "Three.js · JS · Tailwind CSS · Vercel",
-    "desc": "Interactive portfolio built as a 3D cube in space. HTML pages rendered on each face, keyboard navigation, free-orbit mode.",
+    "desc": "Interactive portfolio built.",
     "link": "https://github.com/KoseRemy/folio-remy-kassim"
   },
   {
-    "name": "Target History Remover (chrome-extension)",
-    "tag": "Personal",
-    "type": "Chrome Extension",
+    "name": "Target History Remover",
+    "type": "chrome-extension",
     "stack": "JS • CSS • HTML",
-    "desc": "Chrome extension that automatically deletes any newly visited tabs/urls containing specified banned search terms.",
+    "desc": "Automatically deletes any newly visited tabs/urls containing specified banned search terms.",
     "link": "https://github.com/KoseRemy/Target-History-Remover---chrome-extension"
   },
   {
-    "name": "Remove-it (chrome-extension)",
-    "tag": "Personal",
-    "type": "Chrome Extension",
+    "name": "Remove-it",
+    "type": "chrome-extension",
     "stack": "JS",
     "desc": "Recreated an extension I adored that was removed. This extension removes elements any html elements on a page via right click. works on irritating pop ups.",
     "link": "https://github.com/KoseRemy/remove-it-chrome-extension"
