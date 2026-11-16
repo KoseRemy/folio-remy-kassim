@@ -260,7 +260,7 @@ function animate(t = 0) {
     }
 
     if ( state3() ) { // Normal Selection
-        const rotationSpeed = 0.30; // higher = faster.
+        const rotationSpeed = 0.35; // Rotation Speed Control : Higher = Faster
         camera.position.z += (1152 - camera.position.z) * 0.15;
         CUBE.quaternion.slerp(targetRotation, rotationSpeed);
     }
