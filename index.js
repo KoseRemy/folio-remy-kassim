@@ -337,7 +337,7 @@ await loadPage("ui", "pages/ui.html");
 await loadPage("wasd", "pages/wasd.html");
 await loadPage("initial", "pages/initial.html");
 loadPage("p1", "pages/side1.html");
-loadProjects("p2", "data/projects.json");
+loadProjects("p2", "data/projects.json"); 
 loadPage("p3", "pages/side3.html");
 loadPage("p4", "pages/side4.html");
 loadPage("p5", "pages/side5.html");
