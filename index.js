@@ -124,7 +124,7 @@ scene.add(sunLight)
 
 
 // STARS
-const stars = getStarfield({ numStars: 500, radius: 3700, size: 25 });
+const stars = getStarfield({ numStars: 500, radius: 3000, size: 25 });
 scene.add(stars)
 
 // EARTH
