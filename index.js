@@ -228,7 +228,7 @@ function animate(t = 0) {
 
     // EARTH STARS PLANETS SPIN
     frame++;
-    if(frame % 1 == 0){stars.userData.update(t);}
+    if(frame % 5 == 0){stars.userData.update(t);}
     earthMesh.rotation.y   += 0.005;
     moonMesh.rotation.y    += 0.00018;
     jupiterMesh.rotation.y += 0.0141;
