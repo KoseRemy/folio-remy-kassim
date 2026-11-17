@@ -228,7 +228,7 @@ function animate(t = 0) {
 
     // EARTH STARS PLANETS SPIN
     frame++;
-    if(frame % 4 == 0){stars.userData.update(t);}
+    if(frame % 1 == 0){stars.userData.update(t);}
     earthMesh.rotation.y   += 0.005;
     moonMesh.rotation.y    += 0.00018;
     jupiterMesh.rotation.y += 0.0141;
@@ -355,10 +355,9 @@ function onResize() {
   const h = window.innerHeight;
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(w, h);
   cssRenderer.setSize(w, h);
-  camera.position.copy(desktopCameraPos);
-  if (w < 768) {camera.position.multiplyScalar(1.8);}
 }
 window.addEventListener("resize", onResize);
 onResize();
