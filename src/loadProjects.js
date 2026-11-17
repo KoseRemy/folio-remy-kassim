@@ -10,40 +10,21 @@ export async function loadProjects(id, filePath) {
     renderProject();
 }
 
-  let web_selected = false;
-  let cloud_selected = false;
-  let devOps_selected = false;
-  let embedded_selected = false;
   const term1 = "web";
   const term2 = "cloud";
   const term3 = "devops";
   const term4 = "embedded";
 
 function select(term){
-  // Clears existing selections - So only at a time is active
-  query.splice(0);
-  web_selected = cloud_selected = devOps_selected = embedded_selected = false;
+  const wasActive = query.includes(term.toLowerCase());
+  
+  query.splice(0); // Clears existing selections - So only at a time is active
+  if(wasActive){ renderProject(); return; } // if same selection, dont run the below
 
-  if(term.toLowerCase() === term1){
-    if(web_selected === false){addTerm(term1)};
-    if(web_selected === true ){removeTerm(term1)};
-    web_selected = !web_selected;
-  } 
-  if(term.toLowerCase() === term2){
-    if(cloud_selected === false){addTerm(term2)};
-    if(cloud_selected === true ){removeTerm(term2)};
-    cloud_selected = !cloud_selected;
-  } 
-  if(term.toLowerCase() === term3){
-    if(devOps_selected === false){addTerm(term3)};
-    if(devOps_selected === true ){removeTerm(term3)};
-    devOps_selected = !devOps_selected;
-  }
-  if(term.toLowerCase() === term4){
-    if(embedded_selected === false){addTerm(term4)};
-    if(embedded_selected === true ){removeTerm(term4)};
-    embedded_selected = !embedded_selected;
-  } 
+  if(term.toLowerCase() === term1){addTerm(term1)};
+  if(term.toLowerCase() === term2){addTerm(term2)};
+  if(term.toLowerCase() === term3){addTerm(term3)};
+  if(term.toLowerCase() === term4){addTerm(term4)};
 }
 
 window.select = select;
