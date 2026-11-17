@@ -10,10 +10,13 @@ export async function loadProjects(id, filePath) {
     renderProject();
 }
 
-  const term1 = "web";
-  const term2 = "cloud";
-  const term3 = "devops";
-  const term4 = "embedded";
+// PROJECT TYPE SELECTION OPTIONS
+const term1 = "web";
+const term2 = "cloud";
+const term3 = "devops";
+const term4 = "embedded";
+const term5 = "network";
+const term6 = "other";
 
 function select(term){
   const wasActive = query.includes(term.toLowerCase());
@@ -25,6 +28,8 @@ function select(term){
   if(term.toLowerCase() === term2){addTerm(term2)};
   if(term.toLowerCase() === term3){addTerm(term3)};
   if(term.toLowerCase() === term4){addTerm(term4)};
+  if(term.toLowerCase() === term5){addTerm(term5)};
+  if(term.toLowerCase() === term6){addTerm(term6)};
 }
 
 window.select = select;
@@ -41,18 +46,24 @@ function renderProject(){
     }
   })();
 
+  // DEV OPS
+  // <p class="mx-2 px-2 border hover:font-bold hover:cursor-pointer ${query.includes(term3) ? 'font-bold border-2' : ''}" 
+  //   onClick = "select('${term3}')"> ${term3} </p>
+
   let html = `
     <div class = "flex flex-row">
       <p class="text-3xl my-5 ">Projects</p>
       <div class = "ml-auto flex flex-row items-end mb-6">
           <p class="mx-2 px-2 border hover:font-bold hover:cursor-pointer ${query.includes(term1) ? 'font-bold border-2' : ''}" 
-            onClick = "select('${term1}')"   > Web </p>
+            onClick = "select('${term1}')"   > ${term1} </p>
           <p class="mx-2 px-2 border hover:font-bold hover:cursor-pointer ${query.includes(term2) ? 'font-bold border-2' : ''}" 
-            onClick = "select('${term2}')" > Cloud </p>
-          <p class="mx-2 px-2 border hover:font-bold hover:cursor-pointer ${query.includes(term3) ? 'font-bold border-2' : ''}" 
-            onClick = "select('${term3}')"> DevOps </p>
+            onClick = "select('${term2}')" > ${term2} </p>
           <p class="mx-2 px-2 border hover:font-bold hover:cursor-pointer ${query.includes(term4) ? 'font-bold border-2' : ''}" 
-            onClick = "select('${term4}')"> Embedded </p>
+            onClick = "select('${term4}')"> ${term4} </p>
+          <p class="mx-2 px-2 border hover:font-bold hover:cursor-pointer ${query.includes(term5) ? 'font-bold border-2' : ''}" 
+            onClick = "select('${term5}')"> ${term5} </p>
+          <p class="mx-2 px-2 border hover:font-bold hover:cursor-pointer ${query.includes(term6) ? 'font-bold border-2' : ''}" 
+            onClick = "select('${term6}')"> ${term6} </p>
       </div>
     </div>
   `;

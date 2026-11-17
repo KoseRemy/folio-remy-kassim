@@ -38,6 +38,14 @@
     "stack": "JS",
     "desc": "Recreated an extension I adored that was removed. This extension removes elements any html elements on a page via right click. works on irritating pop ups.",
     "link": "https://github.com/KoseRemy/remove-it-chrome-extension"
+  },
+  {
+    "name": "Home Lab (small)",
+    "type": "Home Server",
+    "area": "network",
+    "stack": "Linux • SSH • Samba",
+    "desc": "Self-hosted Linux server managed over SSH, network file share accessible from File Explorer.",
+    "link": "https://github.com/KoseRemy/home-lab"
   }
   
 ]
