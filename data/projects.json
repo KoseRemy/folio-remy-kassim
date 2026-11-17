@@ -3,7 +3,7 @@
     "name":  "RMIT Rover Team : GUI (contributor)",
     "type":  "Desktop App",
     "area":  "embedded",
-    "stack": "JS · REACT · ROS2",
+    "stack": "JS · REACT · ... ",
     "desc":  "in progress.....",
     "link":  "..."
   },
@@ -16,11 +16,11 @@
     "link": "https://csitsociety.club/"
   },
   {
-    "name": "3D Interactive Resume (this site)",
+    "name": "Online Resume/Portfolio (👋this site)",
     "type": "Website",
     "area": "web",
-    "stack": "Three.js · JS · Tailwind CSS · Vercel",
-    "desc": "Interactive online portfolio.",
+    "stack": "Three.js · JS · Tailwind CSS · HTML",
+    "desc": "Interactive online portfolio for CS and Photography.",
     "link": "https://github.com/KoseRemy/folio-remy-kassim"
   },
   {
