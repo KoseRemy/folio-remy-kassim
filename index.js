@@ -231,9 +231,10 @@ function animate(t = 0) {
     if(frame % 4 == 0){stars.userData.update(t);}
     earthMesh.rotation.y   += 0.005;
     moonMesh.rotation.y    += 0.00018;
-    jupiterMesh.rotation.y += 0.0121;
+    jupiterMesh.rotation.y += 0.0141;
     saturnMesh.rotation.y  += 0.0113;
-    uranusMesh.rotation.y  -= 0.0070;
+    uranusMesh.rotation.y  -= 0.0170;
+    marsMesh.rotation.y    += 0.00687;
     sunMesh.rotation.y     += 0.0002;
 
     // STATE 1: before the user clicks, spin the cube
