@@ -262,7 +262,11 @@ function animate(t = 0) {
 
     if ( state3() ) { // Normal Selection
         const rotationSpeed = 0.35; // Rotation Speed Control : Higher = Faster
-        camera.position.z += (1152 - camera.position.z) * 0.15;
+        const halfFov = THREE.MathUtils.degToRad(camera.fov / 2);
+        const fitDistance = 500 + 500 / (Math.tan(halfFov) * camera.aspect);
+        const zoomcont = 1.1;
+        const zoomDistance = Math.max(1152, fitDistance * zoomcont);
+        camera.position.z += (zoomDistance - camera.position.z) * 0.15;
         CUBE.quaternion.slerp(targetRotation, rotationSpeed);
     }
 
@@ -343,6 +347,21 @@ loadPage("p3", "pages/side3.html");
 loadPage("p4", "pages/side4.html");
 loadPage("p5", "pages/side5.html");
 loadPage("p6", "pages/side6.html");
+
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+const desktopCameraPos = camera.position.clone();
+function onResize() {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+  cssRenderer.setSize(w, h);
+  camera.position.copy(desktopCameraPos);
+  if (w < 768) {camera.position.multiplyScalar(1.8);}
+}
+window.addEventListener("resize", onResize);
+onResize();
 
 // ============= HELPER FUNCTIONS ============================================
 
